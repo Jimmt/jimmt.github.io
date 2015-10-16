@@ -1,0 +1,29 @@
+
+img {
+	display: block;
+	width: 200px;
+	border-radius: 100%;
+	margin: auto;
+	margin-top: 40px;
+}
+
+#titleBar {
+	width: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+#name {
+	display: block;
+	width:100%;
+	font-family: "Trebuchet MS";
+	color:white;
+	vertical-align: middle;
+	font-size: 40px;
+}
+
+.text {
+	font-family: "Trebuchet MS";
+	color:white;
+	font-size: 20px;
+}

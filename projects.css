@@ -7,11 +7,11 @@
 
 table {
 	color: white;
-	width:100%;
+	width: 100%;
+	border-spacing: 8;
 }
-
 .project_button  {
-	padding: 30px;
+	padding: 10px;
 	text-align: center;
 	background-color: rgb(15, 15, 15);
 }
@@ -27,9 +27,9 @@ p {
 	font-style: italic;
 }
 
-
-#display {
+#display {	
 	text-align: center;
+	/* bg image */
 }
 
 #display_screen {

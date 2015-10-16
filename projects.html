@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Projects</title>
-	<link rel="stylesheet" type="text/css" href="theme.css">
+	<link rel="stylesheet" type="text/css" href="projects.css">
 </head>
 <body> 
 	<div id="header"></div>
@@ -13,10 +13,8 @@
 					<img class="project_icon" src="images/projects/puckslide_icon.png"/>
 					<p>Puck Slide</p>
 				</td>
-				<td rowspan = "4">
-					<div id="display">
+				<td rowspan = "4" id="display">
 						<img id="display_screen"  src="images/projects/puckslide_screen.png" />
-					</div>
 				</td>
 			</tr>
 			<tr>
@@ -40,23 +38,7 @@
 		</table>
 	</div>
 
-	<script>
-	var buttons = document.getElementsByClassName("project_button");
-
-	var names = ["puckslide", "totems", "smite", "hologram"];
-	var added = false;
-
-	for(var i = 0; i < buttons.length; i++){
-		var name = names[i];
-
-		var func = function(_name){
-			buttons[i].addEventListener("click", function(){
-				var img = document.getElementById("display_screen");
-				img.src = "images/projects/" + _name + "_screen.png";
-			});
-		}
-		func(name);
-	}
+	<script language="javascript" type="text/javascript" src="projectdisplay.js">
 	</script>
 
 </body>
