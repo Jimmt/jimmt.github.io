@@ -10,13 +10,13 @@ table {
 	width:100%;
 }
 
-td {
+.project_button  {
 	padding: 30px;
 	text-align: center;
 	background-color: rgb(15, 15, 15);
 }
 
-td:hover {
+.project_button:hover {
 	background-color: rgb(0, 50, 100);
 	cursor: pointer; 
 	cursor: hand;
@@ -39,8 +39,8 @@ p {
 }
 
 .project_icon {
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 }
 
 .project_screen {
