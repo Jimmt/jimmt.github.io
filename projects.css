@@ -23,26 +23,34 @@ table {
 	cursor: hand;
 }
 
-p {
+.projectPanelText {
+	font-family: "Trebuchet MS";
+	font-size: 20px;
+	line-height: 1.5em;
+	background-color: rgb(35, 40, 45);
+	white-space: pre-wrap;
+}
+
+.projectButtonText {
 	font-family: "Trebuchet MS";
 	font-style: italic;
 }
 
 #display {	
 	text-align: center;
-	/* bg image */
+	border: 2px solid black;
+	background-color: rgb(70, 70, 75);
 }
 
 #display_screen {
-	width: 300px;
-	height: 200px;
 	text-align: center;
-	/*border: 1px solid black;*/
+	border: 2px solid black;
+	
 }
 
 .project_icon {
-	width: 80px;
-	height: 80px;
+	width: 50px;
+	height: 50px;
 }
 
 .project_screen {
