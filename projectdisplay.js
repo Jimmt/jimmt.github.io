@@ -30,7 +30,6 @@ var projects = [
 	"tools": ["libgdx"],
 }
 ];
-var names = ["puckslide", "totems", "smite", "hologram"];
 var added = false;
 
 var table = document.getElementById("project_table");
