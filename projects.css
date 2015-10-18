@@ -1,24 +1,23 @@
 #page {
 	margin: auto;
-	width: 75%;
+	width: 90%;
 	height: 100%;
-	background-color: rgba(50, 50, 50, 0.75);
+	background-color: rgba(250, 250, 250, 1.0);
 }
-
 table {
-	color: white;
 	width: 100%;
 	border-spacing: 8;
+	margin-top: 20px;
 }
 .project_button  {
 	padding: 10px;
-	width:20%;
+	width: 100px;	
 	text-align: center;
-	background-color: rgb(15, 15, 15);
+	background-color: rgb(240, 240, 240);
 }
 
 .project_button:hover {
-	background-color: rgb(0, 50, 100);
+	background-color: rgb(255, 140, 140);
 	cursor: pointer; 
 	cursor: hand;
 }
@@ -27,25 +26,24 @@ table {
 	font-family: "Trebuchet MS";
 	font-size: 20px;
 	line-height: 1.5em;
-	background-color: rgb(35, 40, 45);
 	white-space: pre-wrap;
+	color: black;
 }
 
 .projectButtonText {
 	font-family: "Trebuchet MS";
 	font-style: italic;
+	color:black;
 }
 
 #display {	
-	text-align: center;
-	border: 2px solid black;
-	background-color: rgb(70, 70, 75);
+	text-align: center;background-color: rgb(240, 240, 240);
 }
 
 #display_screen {
+	margin-top: 20px;
 	text-align: center;
-	border: 2px solid black;
-	
+	background-color: 
 }
 
 .project_icon {

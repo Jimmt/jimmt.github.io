@@ -46,12 +46,23 @@ var projects = [
 	"width": 550,
 	"height": 300,
 },
+{
+	"name": "Rainbow Hippie 2",
+	"ref": "fbla",
+	"description": "<b>Made for FBLA Computer Game & Simulation Programming 2015\n</b> Pilot your spaceship and shoot your enemies as you navigate through mutliple levels and experience unique boss fights. Upgrade your ship, or change its visual appearance to customize your experience.",
+	"platforms": ["google_play"],
+	"tools": ["libgdx"],
+	"width": 550,
+	"height": 300,
+},
 ];
 var added = false;
 
 var table = document.getElementById("project_table");
+
+var tr = table.insertRow();
+
 for(var i = 0; i < projects.length; i++){
-	var tr = table.insertRow();
 
 	var image = new Image();
 	image.className = "project_icon";
@@ -69,19 +80,28 @@ for(var i = 0; i < projects.length; i++){
 	td1.appendChild(p);
 
 	if(i == 0){
-		var td2 = tr.insertCell();
-		td2.setAttribute("rowSpan", projects.length);
+		var tr1 = table.insertRow();
+		var td2 = tr1.insertCell();
+		
+		td2.setAttribute("colSpan", projects.length);
 		td2.id = "display";
 		updatePanel(projects[0], td2);
 	};
 	
 }
 
+var color = "rgb(255, 140, 140)";
 
 for(var i = 0; i < buttons.length; i++){
 	var project = projects[i];
 	var func = function(_project){
 		buttons[i].addEventListener("click", function(){
+
+			for(var j = 0; j < buttons.length; j++){
+				buttons[j].style.backgroundColor = "rgb(240, 240, 240)";
+			}
+			// this.style = "border-color: red";
+			this.style = "background-color: " + color;
 			updatePanel(_project, null);
 		});
 	}
@@ -90,6 +110,7 @@ for(var i = 0; i < buttons.length; i++){
 
 function updatePanel(project, td){
 	if(td != null){
+
 		var image = new Image();
 		image.width = project.width;
 		image.height = project.height;

@@ -17,3 +17,10 @@ function readTextFile(file)
 	rawFile.send(null);
 }
 readTextFile("header.html");
+
+var buttons = document.getElementsByClassName("headerButton");
+for(var i = 0; i < buttons.length; i++){
+	if(window.location.href == buttons[i].href){
+		buttons[i].style = "border-bottom: 2px red solid;";
+	}
+}
