@@ -101,7 +101,8 @@ for(var i = 0; i < buttons.length; i++){
 				buttons[j].style.backgroundColor = "rgb(240, 240, 240)";
 			}
 			// this.style = "border-color: red";
-			this.style = "background-color: " + color;
+			this.style.backgroundColor = color;
+			alert(color);
 			updatePanel(_project, null);
 		});
 	}
