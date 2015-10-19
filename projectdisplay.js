@@ -31,7 +31,7 @@ var projects = [
 {
 	"name": "Hologram Clock",
 	"ref": "hologram",
-	"description": "Clock hologram for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
+	"description": "A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
 	"platforms": ["google_play"],
 	"tools": ["libgdx"],
 	"width": 375,
@@ -49,7 +49,7 @@ var projects = [
 {
 	"name": "Rainbow Hippie 2",
 	"ref": "fbla",
-	"description": "<b>Made for FBLA Computer Game & Simulation Programming 2015\n</b> Pilot your spaceship and shoot your enemies as you navigate through mutliple levels and experience unique boss fights. Upgrade your ship, or change its visual appearance to customize your experience.",
+	"description": "Experience the vibrant action of shooting rainbows and dodging obstacles, fighting dangeous monsters along the way. Visit the skies, ocean, and underground in your journey through the game!",
 	"platforms": ["google_play"],
 	"tools": ["libgdx"],
 	"width": 550,
@@ -102,7 +102,6 @@ for(var i = 0; i < buttons.length; i++){
 			}
 			// this.style = "border-color: red";
 			this.style.backgroundColor = color;
-			alert(color);
 			updatePanel(_project, null);
 		});
 	}
@@ -110,8 +109,8 @@ for(var i = 0; i < buttons.length; i++){
 }
 
 function updatePanel(project, td){
-	if(td != null){
 
+	if(td != null){
 		var image = new Image();
 		image.width = project.width;
 		image.height = project.height;
@@ -127,9 +126,10 @@ function updatePanel(project, td){
 		td.appendChild(descrip);
 	}
 	var img = document.getElementById("display_screen");
+	img.src = "images/projects/" + project.ref + "_screen.png";
 	img.width = project.width;
 	img.height = project.height;
-	img.src = "images/projects/" + project.ref + "_screen.png";
 	var descrip = document.getElementById("descriptionText");
 	descrip.innerHTML = project.description;
+
 }

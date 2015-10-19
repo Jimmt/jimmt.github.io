@@ -1,29 +1,42 @@
-
-img {
+#profile {
 	display: block;
 	width: 200px;
 	border-radius: 100%;
+	border: 1px black solid;
 	margin: auto;
-	margin-top: 40px;
+	margin-top: 24px;
 }
-
 #titleBar {
 	width: 100%;
 	margin: auto;
 	text-align: center;
 }
-
 #name {
-	display: block;
-	width:100%;
+	display: inline;
+	width: 100%;
 	font-family: "Trebuchet MS";
-	color:black;
-	vertical-align: middle;
-	font-size: 40px;
+	color: black;
+	font-size: 34px;	
+	padding: 0px 50px 20px 50px;
+	border-bottom: 2px red solid;
 }
-
+#name_container {
+	display: block;
+	margin-top: 20px;
+}
+.text_container {
+	display: inline-block;
+	margin-top: 20px;
+	width:75%;
+	text-align: center;
+	line-height: 2.5em;
+}
+a {
+	text-decoration: none;
+	color: rgb(255, 50, 50);
+}
 .text {
-	font-family: "Trebuchet MS";
+	font-family: "Geosanslight";
 	color:black;
-	font-size: 20px;
+	font-size: 26px;
 }
