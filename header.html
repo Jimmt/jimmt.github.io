@@ -1,11 +1,15 @@
 <link rel="icon" type="image/png" href="images/favicon.png">
 <!-- <a href="index.html"><h1>AUSTIN HSIEH</h1></a> -->
 <div id="headerButtons">
-	<a href="about.html"  class="headerButton">ABOUT</a>
-	<a href="projects.html"  class="headerButton">PROJECTS</a>
+	<div id="leftButtons">
+		<a href="about.html"  class="headerButton">ABOUT</a>
+		<a href="projects.html"  class="headerButton">PROJECTS</a>
+	</div>
 	<div id="logo_container"><img id="logo" src="images/logo.png"/></div>
-	<a href="awards.html"  class="headerButton">AWARDS</a>
-	<a href="contact.html" class="headerButton">CONTACT</a>
+	<div id="rightButtons">
+		<a href="awards.html"  class="headerButton">AWARDS</a>
+		<a href="contact.html" class="headerButton">CONTACT</a>
+	</div>
 </div>
 
 <style type="text/css">
@@ -17,12 +21,22 @@ body {
 	/*background-size: cover;*/
 } 
 @font-face {
-  font-family: 'Geosanslight';
-  src: url('fonts/Geosanslight.ttf');
-  font-family: 'Clear-sans';
-  src: url('fonts/clear-sans.light.ttf');
+	font-family: 'Geosanslight';
+	src: url('fonts/Geosanslight.ttf');
+	font-family: 'Clear-sans';
+	src: url('fonts/clear-sans.light.ttf');
+}
+#leftButtons {
+	display: inline;
+	width:30%;
+}
+#rightButtons {
+	display: inline;
+	width:30%;
 }
 #header {
+	overflow: auto;
+	white-space: nowrap;
 	width: 100%;
 	height: 70px;
 	text-align: center;
@@ -39,7 +53,7 @@ body {
 	line-height: 70px;
 	margin-left: 20px;
 	margin-right: 20px;
-	 
+
 }
 .headerButton:hover {
 	background-color: rgb(255, 140, 140);
@@ -50,9 +64,9 @@ body {
 }
 #logo_container {
 	display: inline-block;
-    text-align: center;
-    clear: both;
-    margin: 0 20 0 20;
+	text-align: center;
+	clear: both;
+	margin: 0 20 0 20;
 }
 h1 {
 	position: relative;

@@ -129,7 +129,7 @@ function updatePanel(project, td){
 
 		var rightSide = document.createElement("div");
 		rightSide.id = "project_panel_right";
-		rightSide.style = "display:inline-block; width: 50%; height: 100%; margin-top: 10px; vertical-align: middle;";
+		rightSide.style = "display:inline-block; width: 50%; height: 100%; overflow:auto; margin-top: 10px; vertical-align: middle;";
 		td.appendChild(rightSide);
 
 		var platformContainer = document.createElement("div");
