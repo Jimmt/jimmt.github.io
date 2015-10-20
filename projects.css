@@ -23,16 +23,17 @@ table {
 }
 
 .projectPanelText {
-	font-family: "Trebuchet MS";
-	font-size: 20px;
+	font-family: "Clear-sans";
+	font-size: 19px;
 	line-height: 1.5em;
+	padding: 0px 10px 0px 10px;
 	white-space: pre-wrap;
 	color: black;
 }
 
 .projectButtonText {
-	font-family: "Trebuchet MS";
-	font-style: italic;
+	font-family: "Clear-sans";
+	font-size: 20px;
 	color:black;
 }
 

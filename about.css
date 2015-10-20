@@ -14,7 +14,7 @@
 #name {
 	display: inline;
 	width: 100%;
-	font-family: "Trebuchet MS";
+	font-family: "Clear-sans";
 	color: black;
 	font-size: 34px;	
 	padding: 0px 50px 20px 50px;
@@ -36,7 +36,7 @@ a {
 	color: rgb(255, 50, 50);
 }
 .text {
-	font-family: "Geosanslight";
+	font-family: "Clear-sans";
 	color:black;
 	font-size: 26px;
 }
