@@ -14,14 +14,18 @@ table {
 	width: 100px;	
 	text-align: center;
 	background-color: rgb(240, 240, 240);
+	border: 2px rgba(1,1,1,0) solid;
 }
-
 .project_button:hover {
-	background-color: rgb(255, 140, 140);
+	border: 2px red solid;
 	cursor: pointer; 
 	cursor: hand;
 }
-
+.projectButtonText {
+	font-family: "Clear-sans";
+	font-size: 20px;
+	color:black;
+}
 .projectPanelText {
 	font-family: "Clear-sans";
 	font-size: 19px;
@@ -29,30 +33,25 @@ table {
 	padding: 0px 10px 0px 10px;
 	white-space: pre-wrap;
 	color: black;
+	clear: both;
 }
-
-.projectButtonText {
-	font-family: "Clear-sans";
-	font-size: 20px;
-	color:black;
-}
-
 #display {	
 	text-align: center;
 	background-color: rgb(240, 240, 240);
 }
-
 #display_screen {
-	margin-top: 20px;
+	margin-left: 10px;
+	margin-top: 10px;
+	padding-bottom: 10px;
 	text-align: center;
-	background-color: 
 }
-
+#platform_container {
+	display: inline-block;
+}
 .project_icon {
 	width: 50px;
 	height: 50px;
 }
-
 .project_screen {
 	width: 320px;
 	height: 180px;

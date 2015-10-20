@@ -106,38 +106,53 @@ for(var i = 0; i < buttons.length; i++){
 		});
 	}
 	func(project);
+
+	if(i == 0){
+		buttons[0].style.backgroundColor = color;
+	}
 }
 
 function updatePanel(project, td){
 
 	if(td != null){
+		var imageContainer = document.createElement("div");
+		imageContainer.id = "image_container";
+		imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
+		td.appendChild(imageContainer);
+
 		var image = new Image();
 		image.width = project.width;
 		image.height = project.height;
 		image.src = "images/projects/" + project.ref + "_screen.png";
 		image.id = "display_screen";
-		td.appendChild(image);
+		imageContainer.appendChild(image);
+
+		var rightSide = document.createElement("div");
+		rightSide.id = "project_panel_right";
+		rightSide.style = "display:inline-block; width: 50%; height: 100%; margin-top: 10px; vertical-align: middle;";
+		td.appendChild(rightSide);
+
+		var platformContainer = document.createElement("div");
+		platformContainer.id = "platform_container";
+		rightSide.appendChild(platformContainer);
 
 		var descrip = document.createElement("p");
 		descrip.id = "descriptionText";
 		descrip.className = "projectPanelText";
 		var descripText = document.createTextNode(projects.description);
 		descrip.appendChild(descripText);
-		td.appendChild(descrip);
+		rightSide.appendChild(descrip);
 	}
 	var img = document.getElementById("display_screen");
 	img.src = "images/projects/" + project.ref + "_screen.png";
 	img.width = project.width;
 	img.height = project.height;
-	var descrip = document.getElementById("descriptionText");
-	descrip.innerHTML = project.description;
 
-	var display = document.getElementById("display");
+	var display = document.getElementById("platform_container");
 	var platformLinks = display.getElementsByClassName("platformLink");
 	for(var i = 0; i < platformLinks.length; i++){
 		display.removeChild(platformLinks[i]);
 	}
-
 	for(var i = 0; i < project.platforms.length; i++){
 		if(project.platforms[i].name == "google_play"){
 			var playLink = document.createElement("a");
@@ -150,5 +165,10 @@ function updatePanel(project, td){
 			display.appendChild(playLink);
 		}
 	}
+
+	var descrip = document.getElementById("descriptionText");
+	descrip.innerHTML = project.description;
+
+
 
 }
