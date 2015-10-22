@@ -7,6 +7,54 @@
 	<div id="header"></div>
 	<script type="text/javascript" src="loadheader.js"></script>
 	<div id="page">
+		<table id="container">
+			<tr>
+				<td colspan="2">
+					<div>
+						<img class="contactButton" src="images/contact/email.png"/>
+						<span>austin.hsieh0@gmail.com</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<img class="contactButton" src="images/contact/linkedin.png"/>
+					</div>
+				</td>
+				<td>
+					<div>
+						<img class="contactButton" src="images/contact/github.png"/>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<img class="contactButton" src="images/contact/youtube.png"/>
+					</div>
+				</td>
+				<td>
+					<div>
+						<img class="contactButton" src="images/contact/twitter.png"/>
+					</div>
+				</td>
+			</tr>
+		</table>
 	</div>
+	<script>
+	var links = ["mailto:austin.hsieh0@gmail.com", "https://www.linkedin.com/pub/austin-hsieh/b7/9a6/b54", "https://github.com/Jimmt", "https://www.youtube.com/user/Jimmt0". "https://twitter.com/j1mmt"];
+
+	var tds = document.getElementsByTagName("td");
+	for(var i = 0; i < tds.length; i++){
+		var func = function(_i){
+			tds[i].addEventListener("click", function(){
+				var url = links[_i];
+				window.open(url, '_blank');
+			});
+		}
+		func(i);
+	}
+	</script>
 </body>
 </html>

@@ -6,3 +6,31 @@
 	background-color: rgb(30, 30, 30);
 	overflow: auto;
 }
+#container {
+	text-align: center;
+	margin: auto;
+	padding-top: 20px;
+	border-spacing: 16px;
+}
+.contactButton {
+	max-width: 200px;
+	padding: 10px;
+	vertical-align: middle;
+}
+td:hover {
+	background-color: rgb(215, 50, 50);
+	cursor: pointer; 
+	cursor: hand;
+}
+td {
+	width: 300px;
+	height: 100px;
+	background-color: rgb(50, 50, 50);
+}
+span {
+	font-family: "Clear-sans";
+	color: white;
+	font-size: 26px;
+	vertical-align: middle;
+	margin-left: 20px;
+}
