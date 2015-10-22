@@ -1,8 +1,15 @@
+#page {
+	display: block;
+	margin: auto;
+	width: 90%;
+	height: 100%;
+	background-color: rgb(30, 30, 30);
+	overflow: auto;
+}
 #profile {
 	display: block;
 	width: 200px;
 	border-radius: 100%;
-	border: 1px black solid;
 	margin: auto;
 	margin-top: 24px;
 }
@@ -15,10 +22,10 @@
 	display: inline;
 	width: 100%;
 	font-family: "Clear-sans";
-	color: black;
+	color: white;
 	font-size: 34px;	
 	padding: 0px 50px 20px 50px;
-	border-bottom: 2px red solid;
+	border-bottom: 2px rgb(255, 0, 0) solid;
 }
 #name_container {
 	display: block;
@@ -33,10 +40,10 @@
 }
 a {
 	text-decoration: none;
-	color: rgb(255, 50, 50);
+	color: rgb(255, 30, 30);
 }
 .text {
 	font-family: "Clear-sans";
-	color:black;
+	color:white;
 	font-size: 26px;
 }

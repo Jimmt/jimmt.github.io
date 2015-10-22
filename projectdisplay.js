@@ -90,7 +90,7 @@ for(var i = 0; i < projects.length; i++){
 	
 }
 
-var color = "rgb(255, 140, 140)";
+var color = "rgb(215, 50, 50)";
 
 for(var i = 0; i < buttons.length; i++){
 	var project = projects[i];
@@ -98,7 +98,7 @@ for(var i = 0; i < buttons.length; i++){
 		buttons[i].addEventListener("click", function(){
 
 			for(var j = 0; j < buttons.length; j++){
-				buttons[j].style.backgroundColor = "rgb(240, 240, 240)";
+				buttons[j].style.backgroundColor = "rgb(30, 30, 30)";
 			}
 			// this.style = "border-color: red";
 			this.style.backgroundColor = color;
