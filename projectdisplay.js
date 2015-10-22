@@ -156,6 +156,7 @@ function updatePanel(project, td){
 	for(var i = 0; i < project.platforms.length; i++){
 		if(project.platforms[i].name == "google_play"){
 			var playLink = document.createElement("a");
+			playLink.target = "_blank";
 			playLink.className = "platformLink";
 			playLink.href = "https://play.google.com/store/apps/details?id=" + project.platforms[i].package;
 			var playImage = document.createElement("img");

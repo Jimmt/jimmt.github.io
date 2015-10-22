@@ -4,13 +4,12 @@
 	width: 90%;
 	height: 100%;
 	background-color: rgb(30, 30, 30);
-	overflow: auto;
 }
 #container {
 	text-align: center;
 	margin: auto;
-	padding-top: 20px;
-	border-spacing: 16px;
+	padding-top: 10px;
+	border-spacing: 14px;
 }
 .contactButton {
 	max-width: 200px;

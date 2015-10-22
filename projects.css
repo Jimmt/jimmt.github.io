@@ -1,16 +1,16 @@
 #page {
-	display: block;
+	display: table;
 	margin: auto;
 	width: 90%;
 	height: 100%;
 	background-color: rgb(30, 30, 30);
-	overflow: auto;
 }
 table {
 	width: 100%;
 	border-spacing: 8;
 	margin-top: 20px;
 	background-color: rgb(50, 50, 50);
+	overflow: 
 }
 .project_button  {
 	padding: 10px;
@@ -40,7 +40,8 @@ table {
 }
 #display {	
 	text-align: center;
-	background-color: rgb(30, 30, 30);;
+	background-color: rgb(30, 30, 30);
+	overflow: hidden;
 }
 #display_screen {
 	margin: 10px 0px 0px 10px;
