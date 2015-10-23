@@ -10,11 +10,14 @@
 	margin: auto;
 	text-align: center;
 	margin-top: 40px;
+	animation-name: fadeIn;
+	animation-duration: 0.5s;
 }
 .award {
 	display: table-row;
 	margin: auto;
 	background-color: rgb(50, 50, 50);
+	
 }
 .award_text {
 	font-family: "Clear-sans";
@@ -23,8 +26,8 @@
 	text-align: center;
 	display: table-cell;
 	vertical-align: middle;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 20px;		
+	padding-right: 20px;		
 }
 .icon {
 	display: table-cell;

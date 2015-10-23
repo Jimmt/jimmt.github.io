@@ -17,6 +17,8 @@
 	width: 100%;
 	margin: auto;
 	text-align: center;
+	animation-name: fadeIn;
+	animation-duration: 0.5s;
 }
 #name {
 	display: inline;

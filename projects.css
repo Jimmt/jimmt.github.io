@@ -10,7 +10,8 @@ table {
 	border-spacing: 8;
 	margin-top: 20px;
 	background-color: rgb(50, 50, 50);
-	overflow: 
+	animation-name: fadeIn;
+	animation-duration: 0.5s;
 }
 .project_button  {
 	padding: 10px;
