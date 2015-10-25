@@ -30,7 +30,17 @@ table {
 	font-size: 20px;
 	color:white;
 }
-.projectPanelText {
+#toolsText {
+	font-family: "Clear-sans";
+	font-size: 19px;
+	font-style: italic;
+	line-height: 1.5em;
+	padding: 0px 10px 0px 10px;
+	white-space: pre-wrap;
+	color: white;
+	clear: both;
+}
+.projectPanelText{
 	font-family: "Clear-sans";
 	font-size: 19px;
 	line-height: 1.5em;

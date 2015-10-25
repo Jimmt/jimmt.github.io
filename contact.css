@@ -20,9 +20,6 @@ td:hover {
 	background-color: rgb(215, 50, 50);
 	cursor: pointer; 
 	cursor: hand;
-}@keyframes fadeIn {
-	from {opacity: 0.0}
-	to {opacity: 1.0}
 }
 td {
 	width: 300px;

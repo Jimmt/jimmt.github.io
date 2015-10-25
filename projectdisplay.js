@@ -6,7 +6,7 @@ var projects = [
 	"ref": "puckslide",
 	"description": "Slide a hockey puck across snow and mud with precision in this addicting arcade game. Integrated with Google Play Game Services for high scores and achievements.",
 	"platforms": [{"name": "google_play", "package" : "com.jumpbuttonstudio.puckslide.android"}],
-	"tools": ["libgdx"],
+	"tools": ["libGDX"],
 	"width": 480,
 	"height": 280,
 },
@@ -15,7 +15,7 @@ var projects = [
 	"ref": "totems",
 	"description": "Stack randomly falling totems and build your stack higher and higher until you reach the skies. Diverse gameplay with powerups, random events, and a dynamic background, as well as integration with Google Play Game Services for achievements and high scores.",
 	"platforms": [{"name": "google_play", "package" : "com.jbs.totemgame.android"}],
-	"tools": ["libgdx"],
+	"tools": ["libGDX"],
 	"width": 200,
 	"height": 320,
 },
@@ -24,7 +24,7 @@ var projects = [
 	"ref": "smite",
 	"description": "<b>1000+ downloads\n</b> Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.smitepractice.android"}],
-	"tools": ["libgdx"],
+	"tools": ["libGDX"],
 	"width": 520,
 	"height": 315,
 },
@@ -33,7 +33,7 @@ var projects = [
 	"ref": "hologram",
 	"description": "A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.HologramClock.android"}],
-	"tools": ["libgdx"],
+	"tools": ["libGDX"],
 	"width": 375,
 	"height": 215,
 },
@@ -42,7 +42,7 @@ var projects = [
 	"ref": "fbla",
 	"description": "<b>Made for FBLA Computer Game & Simulation 2015\n</b> Pilot your spaceship and shoot your enemies as you navigate through mutliple levels and experience unique boss fights. Upgrade your ship, or change its visual appearance to customize your experience.",
 	"platforms": [],
-	"tools": ["libgdx"],
+	"tools": ["libGDX"],
 	"width": 550,
 	"height": 300,
 },
@@ -51,7 +51,7 @@ var projects = [
 	"ref": "fbla",
 	"description": "Experience the vibrant action of shooting rainbows and dodging obstacles, fighting dangeous monsters along the way. Visit the skies, ocean, and underground in your journey through the game!",
 	"platforms": [],
-	"tools": ["libgdx"],
+	"tools": ["libGDX"],
 	"width": 550,
 	"height": 300,
 },
@@ -136,6 +136,13 @@ function updatePanel(project, td){
 		platformContainer.id = "platform_container";
 		rightSide.appendChild(platformContainer);
 
+		var toolsP = document.createElement("p");
+		toolsP.id = "toolsText";
+		var toolsText = "";
+		var toolsTextNode = document.createTextNode("Built With: " + toolsText);
+		toolsP.appendChild(toolsTextNode);
+		rightSide.appendChild(toolsP);
+
 		var descrip = document.createElement("p");
 		descrip.id = "descriptionText";
 		descrip.className = "projectPanelText";
@@ -167,9 +174,14 @@ function updatePanel(project, td){
 		}
 	}
 
+	var toolsText = "";
+	for(var i = 0; i < project.tools.length; i++){
+		toolsText += project.tools[i];
+	}
+	document.getElementById("toolsText").innerHTML = "Built With: " + toolsText;
+
 	var descrip = document.getElementById("descriptionText");
 	descrip.innerHTML = project.description;
-
 
 
 }
