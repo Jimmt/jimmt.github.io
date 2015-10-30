@@ -48,7 +48,7 @@ var projects = [
 },
 {
 	"name": "Rainbow Hippie 2",
-	"ref": "fbla",
+	"ref": "rh2",
 	"description": "Experience the vibrant action of shooting rainbows and dodging obstacles, fighting dangeous monsters along the way. Visit the skies, ocean, and underground in your journey through the game!",
 	"platforms": [],
 	"tools": ["libGDX"],
