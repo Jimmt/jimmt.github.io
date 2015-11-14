@@ -22,7 +22,7 @@ var projects = [
 {
 	"name": "Smite Training",
 	"ref": "smite",
-	"description": "<b>1000+ downloads\n</b> Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
+	"description": "<b>1500+ downloads\n</b> Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.smitepractice.android"}],
 	"tools": ["libGDX"],
 	"width": 520,
@@ -31,7 +31,7 @@ var projects = [
 {
 	"name": "Hologram Clock",
 	"ref": "hologram",
-	"description": "A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
+	"description": "<b>1000+ downloads\n</b> A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.HologramClock.android"}],
 	"tools": ["libGDX"],
 	"width": 375,
