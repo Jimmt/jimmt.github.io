@@ -50,7 +50,7 @@ var projects = [
 	"name": "Rainbow Hippie 2",
 	"ref": "rh2",
 	"description": "Experience the vibrant action of shooting rainbows and dodging obstacles, fighting dangeous monsters along the way. Visit the skies, ocean, and underground in your journey through the game!",
-	"platforms": [],
+	"platforms": [{"name": "google_play", "package" : "com.jbs.rh2.android"}],
 	"tools": ["libGDX"],
 	"width": 550,
 	"height": 300,
