@@ -22,7 +22,7 @@ var projects = [
 {
 	"name": "Smite Training",
 	"ref": "smite",
-	"description": "<b>20000+ downloads\n</b> Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
+	"description": "<b>80000+ downloads\n</b> Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.smitepractice.android"}],
 	"tools": ["libGDX"],
 	"width": 520,
@@ -31,7 +31,7 @@ var projects = [
 {
 	"name": "Hologram Clock",
 	"ref": "hologram",
-	"description": "<b>10000+ downloads\n</b> A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
+	"description": "<b>15000+ downloads\n</b> A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.HologramClock.android"}],
 	"tools": ["libGDX"],
 	"width": 375,
@@ -56,6 +56,9 @@ var projects = [
 	"height": 300,
 },
 ];
+
+var imagesCache = [];
+
 var added = false;
 
 var table = document.getElementById("project_table");
@@ -63,7 +66,14 @@ var table = document.getElementById("project_table");
 var tr = table.insertRow();
 
 for(var i = 0; i < projects.length; i++){
-
+	var fullImage = new Image();
+	fullImage.width = projects[i].width;
+	fullImage.height = projects[i].height;
+	fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
+	fullImage.id = "display_screen";
+	imagesCache.push(fullImage);
+}
+for(var i = 0; i < projects.length; i++){
 	var image = new Image();
 	image.className = "project_icon";
 	image.src = "images/projects/" + projects[i].ref + "_icon.png";
@@ -85,7 +95,7 @@ for(var i = 0; i < projects.length; i++){
 		
 		td2.setAttribute("colSpan", projects.length);
 		td2.id = "display";
-		updatePanel(projects[0], td2);
+		updatePanel(0, projects[0], td2);
 	};
 	
 }
@@ -94,38 +104,30 @@ var color = "rgb(215, 50, 50)";
 
 for(var i = 0; i < buttons.length; i++){
 	var project = projects[i];
-	var func = function(_project){
+	(function(i){
 		buttons[i].addEventListener("click", function(){
-
 			for(var j = 0; j < buttons.length; j++){
 				buttons[j].style.backgroundColor = "rgb(30, 30, 30)";
 			}
 			// this.style = "border-color: red";
 			this.style.backgroundColor = color;
-			updatePanel(_project, null);
+			updatePanel(i, projects[i], null);
+
 		});
-	}
-	func(project);
+	})(i);
+
 
 	if(i == 0){
 		buttons[0].style.backgroundColor = color;
 	}
 }
 
-function updatePanel(project, td){
-
+function updatePanel(index, project, td){	
 	if(td != null){
 		var imageContainer = document.createElement("div");
 		imageContainer.id = "image_container";
 		imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
 		td.appendChild(imageContainer);
-
-		var image = new Image();
-		image.width = project.width;
-		image.height = project.height;
-		image.src = "images/projects/" + project.ref + "_screen.png";
-		image.id = "display_screen";
-		imageContainer.appendChild(image);
 
 		var rightSide = document.createElement("div");
 		rightSide.id = "project_panel_right";
@@ -150,10 +152,9 @@ function updatePanel(project, td){
 		descrip.appendChild(descripText);
 		rightSide.appendChild(descrip);
 	}
-	var img = document.getElementById("display_screen");
-	img.src = "images/projects/" + project.ref + "_screen.png";
-	img.width = project.width;
-	img.height = project.height;
+	var imageContainer = document.getElementById("image_container");
+	imageContainer.innerHTML = "";
+	imageContainer.appendChild(imagesCache[index]);
 
 	var display = document.getElementById("platform_container");
 	var platformLinks = display.getElementsByClassName("platformLink");
