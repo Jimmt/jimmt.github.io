@@ -22,6 +22,7 @@ readTextFile("header.html");
 var buttons = document.getElementsByClassName("headerButton");
 for(var i = 0; i < buttons.length; i++){
 	if(window.location.href == buttons[i].href){
-		buttons[i].style.backgroundColor = "rgb(215, 50, 50)";
+		buttons[i].style.setProperty("border-color", "var(--highlight-color)");
+		// buttons[i].style.setProperty("background-color", "var(--highlight-color)");
 	}
 }

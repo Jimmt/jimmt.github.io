@@ -100,17 +100,17 @@ for(var i = 0; i < projects.length; i++){
 	
 }
 
-var color = "rgb(215, 50, 50)";
+var buttonSelectedColor = "var(--highlight-color)";
 
 for(var i = 0; i < buttons.length; i++){
 	var project = projects[i];
 	(function(i){
 		buttons[i].addEventListener("click", function(){
 			for(var j = 0; j < buttons.length; j++){
-				buttons[j].style.backgroundColor = "rgb(30, 30, 30)";
+				buttons[j].style.backgroundColor = "var(--page-color)";
 			}
 			// this.style = "border-color: red";
-			this.style.backgroundColor = color;
+			this.style.setProperty("background-color", buttonSelectedColor);
 			updatePanel(i, projects[i], null);
 
 		});
@@ -118,7 +118,7 @@ for(var i = 0; i < buttons.length; i++){
 
 
 	if(i == 0){
-		buttons[0].style.backgroundColor = color;
+		buttons[0].style.setProperty("background-color", buttonSelectedColor);
 	}
 }
 
