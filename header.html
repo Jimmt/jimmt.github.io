@@ -36,9 +36,10 @@
 	    --font-color:rgb(255, 255, 255);*/
 
 	    --header-color:rgb(215, 215, 215);
-	    --highlight-color:rgb(215, 50, 50);
-	    --contrast-color:rgb(185, 185, 185);
-	    --page-color:rgb(235, 235, 235);
+	    --highlight-color:rgb(82, 132, 211);
+	    --highlight-color-2:rgb(185, 205, 237);
+	    --contrast-color:rgb(200, 200, 200);
+	    --page-color:rgb(255, 255, 255);
 	    --font-color:rgb(0, 0, 0);
 	    --transparent-color:rgba(0, 0, 0, 0);
 	}
@@ -68,7 +69,7 @@
 		margin: auto;
 		height: 70px;
 		text-align: center;
-		background-color: var(--header-color);
+		background-color: var(--page-color);
 	} 
 	.headerButton {
 		display: inline-block;
@@ -83,7 +84,6 @@
 		margin-right: 20px;
 		border-style: solid;
 		border-color: var(--transparent-color);
-		margin-top: -2px;
 		border-width: 0px 0px 2px 0px;
 	}
 	@keyframes fadeInButton {
@@ -92,7 +92,7 @@
 	}
 	.headerButton:hover {
 		animation-name: fadeInButton;
-		animation-duration: 0.25s;
+		animation-duration: 0.5s;
 		animation-fill-mode:forwards;
 		-webkit-animation-fill-mode:forwards;
 		-moz-animation-fill-mode:forwards;
@@ -100,14 +100,12 @@
 	#logo {
 		display: inline-block;
 		text-align: center;
-		clear: both;
 		font-family: "clear-sans";
 		font-size: 26px;
-		text-align: center;
 		text-decoration: none;
 		color: var(--font-color);	
 		margin: 0 20 0 20;
-		width:15%;
+		width: 15%;
 		}
 	h1 {
 		position: relative;

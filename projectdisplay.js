@@ -107,7 +107,7 @@ for(var i = 0; i < buttons.length; i++){
 	(function(i){
 		buttons[i].addEventListener("click", function(){
 			for(var j = 0; j < buttons.length; j++){
-				buttons[j].style.backgroundColor = "var(--page-color)";
+				buttons[j].style.backgroundColor = "var(--highlight-color-2)";
 			}
 			// this.style = "border-color: red";
 			this.style.setProperty("background-color", buttonSelectedColor);

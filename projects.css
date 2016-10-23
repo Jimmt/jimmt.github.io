@@ -9,7 +9,7 @@ table {
 	width: 100%;
 	border-spacing: 8;
 	margin-top: 20px;
-	background-color: var(--contrast-color);
+	background-color: var(--page-color);
 	animation-name: fadeIn;
 	animation-duration: 0.5s;
 }
@@ -17,11 +17,11 @@ table {
 	padding: 10px;
 	width: 100px;	
 	text-align: center;
-	background-color: var(--page-color);
+	background-color: var(--highlight-color-2);
 	border: 2px rgba(1,1,1,0) solid;
 }
 .project_button:hover {
-	border: 2px red solid;
+	border: 2px var(--highlight-color) solid;
 	cursor: pointer; 
 	cursor: hand;
 }
