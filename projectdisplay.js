@@ -57,18 +57,35 @@ var projects = [
 },
 ];
 
+window.onpopstate = function(event)
+{
+	if(document.location.hash == ""){
+		document.location.reload();
+	} else {
+		for(var i = 0; i < projects.length; i++){
+			if(document.location.hash == "#" + projects[i].ref){
+				showProject(i);
+			}
+		}}
+};
+window.onhashchange = function(event)
+{
+	for(var i = 0; i < projects.length; i++){
+		if(document.location.hash == "#" + projects[i].ref){
+			showProject(i);
+		}
+	}
+};
+
 var imagesCache = [];
 
 var added = false;
 
-var table = document.getElementById("project_table");
+var projectsContainer = document.getElementById("projects_container");
 
-var tr = table.insertRow();
 
 for(var i = 0; i < projects.length; i++){
 	var fullImage = new Image();
-	fullImage.width = projects[i].width;
-	fullImage.height = projects[i].height;
 	fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
 	fullImage.id = "display_screen";
 	imagesCache.push(fullImage);
@@ -78,89 +95,89 @@ for(var i = 0; i < projects.length; i++){
 	image.className = "project_icon";
 	image.src = "images/projects/" + projects[i].ref + "_icon.png";
 
-	var td1 = tr.insertCell();
-	td1.className = "project_button";
-	tr.appendChild(td1);
-	td1.appendChild(image);
+	var projectButton = document.createElement("a");
+	projectButton.href = "#" + projects[i].ref;
+	projectButton.className = "project_button";
+	projectButton.appendChild(image);
+	projectsContainer.appendChild(projectButton);
 
 	var p = document.createElement("p");
 	p.className = "projectButtonText";
 	var text = document.createTextNode(projects[i].name);
 	p.appendChild(text);
-	td1.appendChild(p);
+	projectButton.appendChild(p);
 
-	if(i == 0){
-		var tr1 = table.insertRow();
-		var td2 = tr1.insertCell();
+
+
+	// if(i == 0){
+	// 	var tr1 = table.insertRow();
+	// 	var td2 = tr1.insertCell();
 		
-		td2.setAttribute("colSpan", projects.length);
-		td2.id = "display";
-		updatePanel(0, projects[0], td2);
-	};
+	// 	td2.setAttribute("colSpan", projects.length);
+	// 	td2.id = "display";
+	// 	updatePanel(0, projects[0], td2);
+	// };
 	
 }
 
 var buttonSelectedColor = "var(--highlight-color)";
 
-for(var i = 0; i < buttons.length; i++){
-	var project = projects[i];
-	(function(i){
-		buttons[i].addEventListener("click", function(){
-			for(var j = 0; j < buttons.length; j++){
-				buttons[j].style.backgroundColor = "var(--highlight-color-2)";
-			}
-			// this.style = "border-color: red";
-			this.style.setProperty("background-color", buttonSelectedColor);
-			updatePanel(i, projects[i], null);
-
-		});
-	})(i);
+for(var i = 0; i < projects.length; i++){
+	(function(){
+		buttons[i].addEventListener("click", wrapper.bind(null, i));
+	})();
 
 
-	if(i == 0){
-		buttons[0].style.setProperty("background-color", buttonSelectedColor);
-	}
+	// if(i == 0){
+	// 	buttons[0].style.setProperty("background-color", buttonSelectedColor);
+	// }
 }
 
-function updatePanel(index, project, td){	
-	if(td != null){
-		var imageContainer = document.createElement("div");
-		imageContainer.id = "image_container";
-		imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
-		td.appendChild(imageContainer);
+function wrapper(index){
+	showProject(index);
+}
 
-		var rightSide = document.createElement("div");
-		rightSide.id = "project_panel_right";
-		rightSide.style = "display:inline-block; width: 50%; height: 100%; overflow:auto; margin-top: 10px; vertical-align: middle;";
-		td.appendChild(rightSide);
+function showProject(index){	
+	var project = projects[index];
+	var page = document.getElementById("page");
+	var storStyle = page.style;
+	page.innerHTML = "";
+	page.style = storStyle;
 
-		var platformContainer = document.createElement("div");
-		platformContainer.id = "platform_container";
-		rightSide.appendChild(platformContainer);
-
-		var toolsP = document.createElement("p");
-		toolsP.id = "toolsText";
-		var toolsText = "";
-		var toolsTextNode = document.createTextNode("Built With: " + toolsText);
-		toolsP.appendChild(toolsTextNode);
-		rightSide.appendChild(toolsP);
-
-		var descrip = document.createElement("p");
-		descrip.id = "descriptionText";
-		descrip.className = "projectPanelText";
-		var descripText = document.createTextNode(projects.description);
-		descrip.appendChild(descripText);
-		rightSide.appendChild(descrip);
-	}
-	var imageContainer = document.getElementById("image_container");
-	imageContainer.innerHTML = "";
+	var imageContainer = document.createElement("div");
+	imageContainer.id = "image_container";
+	imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
+	page.appendChild(imageContainer);
 	imageContainer.appendChild(imagesCache[index]);
 
-	var display = document.getElementById("platform_container");
-	var platformLinks = display.getElementsByClassName("platformLink");
-	for(var i = 0; i < platformLinks.length; i++){
-		display.removeChild(platformLinks[i]);
-	}
+	var rightSide = document.createElement("div");
+	rightSide.id = "project_panel_right";
+	rightSide.style = "display:inline-block; width: 50%; height: 100%; overflow:auto; margin-top: 10px; vertical-align: middle;";
+	page.appendChild(rightSide);
+
+	var name = document.createElement("p");
+	name.appendChild(document.createTextNode(project.name));
+	name.className = "name_text";
+	rightSide.appendChild(name);
+
+	var descrip = document.createElement("p");
+	descrip.id = "descriptionText";
+	descrip.className = "projectPanelText";
+	var descripText = document.createTextNode(projects.description);
+	descrip.appendChild(descripText);
+	rightSide.appendChild(descrip);
+
+	var toolsP = document.createElement("p");
+	toolsP.id = "toolsText";
+	var toolsText = "";
+	var toolsTextNode = document.createTextNode("Built With: " + toolsText);
+	toolsP.appendChild(toolsTextNode);
+	rightSide.appendChild(toolsP);
+
+	var platformContainer = document.createElement("div");
+	platformContainer.id = "platform_container";
+	rightSide.appendChild(platformContainer);
+
 	for(var i = 0; i < project.platforms.length; i++){
 		if(project.platforms[i].name == "google_play"){
 			var playLink = document.createElement("a");
@@ -171,7 +188,7 @@ function updatePanel(index, project, td){
 			playImage.src = "https://developer.android.com/images/brand/en_app_rgb_wo_60.png";
 			playImage.alt = "Android app on Google Play";
 			playLink.appendChild(playImage);
-			display.appendChild(playLink);
+			rightSide.appendChild(playLink);
 		}
 	}
 
@@ -183,6 +200,5 @@ function updatePanel(index, project, td){
 
 	var descrip = document.getElementById("descriptionText");
 	descrip.innerHTML = project.description;
-
-
 }
+

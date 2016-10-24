@@ -5,25 +5,35 @@
 	height: 100%;
 	background-color: var(--page-color);
 }
-table {
+#projects_container {
 	width: 100%;
-	border-spacing: 8;
-	margin-top: 20px;
+	margin: 40px 40px 0px 40px;
 	background-color: var(--page-color);
 	animation-name: fadeIn;
 	animation-duration: 0.5s;
 }
 .project_button  {
+	display: inline-block;
 	padding: 10px;
-	width: 100px;	
+	width: 130px;	
+	height: 130px;
 	text-align: center;
 	background-color: var(--highlight-color-2);
-	border: 2px rgba(1,1,1,0) solid;
+	/*border: 2px rgba(1,1,1,0) solid;*/
+	text-decoration: none;
+	vertical-align: top;
+	margin: 0px 5px 0px 5px;
 }
 .project_button:hover {
-	border: 2px var(--highlight-color) solid;
+	/*border: 2px var(--highlight-color) solid;*/
+	background-color: var(--highlight-color);
 	cursor: pointer; 
 	cursor: hand;
+}
+.name_text {
+	font-family: "Clear-sans";
+	font-size: 26px;
+	color: var(--font-color);
 }
 .projectButtonText {
 	font-family: "Clear-sans";
@@ -35,7 +45,7 @@ table {
 	font-size: 19px;
 	font-style: italic;
 	line-height: 1.5em;
-	padding: 0px 10px 0px 10px;
+	/*padding: 0px 10px 0px 10px;*/
 	white-space: pre-wrap;
 	color: var(--font-color);
 	clear: both;
@@ -44,7 +54,6 @@ table {
 	font-family: "Clear-sans";
 	font-size: 19px;
 	line-height: 1.5em;
-	padding: 0px 10px 0px 10px;
 	white-space: pre-wrap;
 	color: var(--font-color);
 	clear: both;
@@ -58,7 +67,8 @@ table {
 	margin: 10px 0px 0px 10px;
 	padding-bottom: 10px;
 	text-align: center;
-	max-width: 100%;
+	max-width: 90%;
+	max-height: 50%;
 }
 #platform_container {
 	display: inline-block;
