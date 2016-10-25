@@ -43,7 +43,8 @@
 #toolsText {
 	font-family: "Clear-sans";
 	font-size: 19px;
-	font-style: italic;
+	text-decoration: none;
+	/*font-style: italic;*/
 	line-height: 1.5em;
 	/*padding: 0px 10px 0px 10px;*/
 	white-space: pre-wrap;

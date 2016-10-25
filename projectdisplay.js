@@ -6,55 +6,58 @@ var projects = [
 	"ref": "puckslide",
 	"description": "Slide a hockey puck across snow and mud with precision in this addicting arcade game. Integrated with Google Play Game Services for high scores and achievements.",
 	"platforms": [{"name": "google_play", "package" : "com.jumpbuttonstudio.puckslide.android"}],
-	"tools": ["libGDX"],
-	"width": 480,
-	"height": 280,
+	"tools": ["Java", "libGDX" ,"Google Play Game Services"],
 },
 {
 	"name": "Totem Stack",
 	"ref": "totems",
 	"description": "Stack randomly falling totems and build your stack higher and higher until you reach the skies. Diverse gameplay with powerups, random events, and a dynamic background, as well as integration with Google Play Game Services for achievements and high scores.",
 	"platforms": [{"name": "google_play", "package" : "com.jbs.totemgame.android"}],
-	"tools": ["libGDX"],
-	"width": 200,
-	"height": 320,
+	"tools": ["Java", "libGDX", "Google Play Game Services"],
 },
 {
 	"name": "Smite Training",
 	"ref": "smite",
-	"description": "<b>80000+ downloads\n</b> Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
+	"description": "<b>80000+ downloads\n</b>Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.smitepractice.android"}],
-	"tools": ["libGDX"],
-	"width": 520,
-	"height": 315,
+	"tools": ["Java", "libGDX", "Google Play Game Services"],
 },
 {
 	"name": "Hologram Clock",
 	"ref": "hologram",
-	"description": "<b>15000+ downloads\n</b> A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
+	"description": "<b>15000+ downloads\n</b>A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
 	"platforms": [{"name": "google_play", "package" : "com.jimmt.HologramClock.android"}],
-	"tools": ["libGDX"],
-	"width": 375,
-	"height": 215,
+	"tools": ["Java", "libGDX"],
 },
 {
 	"name": "Infection: FBLA 2015",
 	"ref": "fbla",
-	"description": "<b>Made for FBLA Computer Game & Simulation 2015\n</b> Pilot your spaceship and shoot your enemies as you navigate through mutliple levels and experience unique boss fights. Upgrade your ship, or change its visual appearance to customize your experience.",
+	"description": "<b>Made for FBLA Computer Game & Simulation 2015\n</b>Pilot your spaceship and shoot your enemies as you navigate through mutliple levels and experience unique boss fights. Upgrade your ship, or change its visual appearance to customize your experience.",
 	"platforms": [],
-	"tools": ["libGDX"],
-	"width": 550,
-	"height": 300,
+	"tools": ["Java", "libGDX"],
 },
 {
 	"name": "Rainbow Hippie 2",
 	"ref": "rh2",
-	"description": "Experience the vibrant action of shooting rainbows and dodging obstacles, fighting dangeous monsters along the way. Visit the skies, ocean, and underground in your journey through the game!",
+	"description": "Experience the vibrant action of shooting rainbows and dodging obstacles, fighting a variety of monsters along the way. Visit the skies, ocean, and underground in your journey through the game!",
 	"platforms": [{"name": "google_play", "package" : "com.jbs.rh2.android"}],
-	"tools": ["libGDX"],
-	"width": 550,
-	"height": 300,
+	"tools": ["Java", "libGDX", "Google Play Game Services"],
 },
+{
+	"name": "Positive Posture",
+	"ref": "positive_posture",
+	"description": "<b>Made during Dubhacks 2016\n</b>Made during a 24-hour hackathon, Positive Posture is a desktop application that monitors your webcam and sends you an alert if you have bad posture by analyzing your facial position.",
+	"platforms": [],
+	"tools": ["Java", "libGDX", "Microsoft Emotion API", "Webcam Capture API"]
+}
+];
+
+var toolLinks = [
+	{"name":"Java", "link":"https://www.java.com/en/"},
+	{"name":"libGDX", "link":"https://libgdx.badlogicgames.com/"},
+	{"name":"Microsoft Emotion API", "link":"https://www.microsoft.com/cognitive-services/en-us/emotion-api"},
+	{"name":"Webcam Capture API", "link":"http://webcam-capture.sarxos.pl"},
+	{"name":"Google Play Game Services", "link":"https://developers.google.com/games/services/"},
 ];
 
 window.onpopstate = function(event)
@@ -194,7 +197,22 @@ function showProject(index){
 
 	var toolsText = "";
 	for(var i = 0; i < project.tools.length; i++){
+		var linkToAdd = "";
+		for(var j = 0; j < toolLinks.length; j++){
+			if(toolLinks[j].name == project.tools[i]){
+				linkToAdd = "<a href=" + toolLinks[j].link + " target='_blank' style='text-decoration:none'>";
+				toolsText += linkToAdd;
+				break;
+			}
+		}
 		toolsText += project.tools[i];
+
+		if(linkToAdd != ""){
+			toolsText += "</a>";
+		}
+		if(i != project.tools.length - 1){
+			toolsText += ", ";
+		}
 	}
 	document.getElementById("toolsText").innerHTML = "Built With: " + toolsText;
 
