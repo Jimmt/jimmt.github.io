@@ -19,21 +19,21 @@ var projects = [
 	"name": "Smite Training",
 	"ref": "smite",
 	"description": "<b>80000+ downloads\n</b>Practice your smiting skill from League of Legends in realistic scenarios. Randomized smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
-	"platforms": [{"name": "google_play", "package" : "com.jimmt.smitepractice.android"}],
+	"platforms": [{"name": "google_play", "package" : "com.jimmt.smitepractice.android"}, {"name": "github", "link" : "https://github.com/Jimmt/Smite-Training"}],
 	"tools": ["Java", "libGDX", "Google Play Game Services"],
 },
 {
 	"name": "Hologram Clock",
 	"ref": "hologram",
 	"description": "<b>15000+ downloads\n</b>A holographic clock for those with a four-sided plastic hologram apparatus (easily made from tutorials on youtube). Features many different vibrant particle effects with color options.",
-	"platforms": [{"name": "google_play", "package" : "com.jimmt.HologramClock.android"}],
+	"platforms": [{"name": "google_play", "package" : "com.jimmt.HologramClock.android"}, {"name": "github", "link" : "https://github.com/Jimmt/HologramClock"}],
 	"tools": ["Java", "libGDX"],
 },
 {
 	"name": "Infection: FBLA 2015",
 	"ref": "fbla",
 	"description": "<b>Made for FBLA Computer Game & Simulation 2015\n</b>Pilot your spaceship and shoot your enemies as you navigate through mutliple levels and experience unique boss fights. Upgrade your ship, or change its visual appearance to customize your experience.",
-	"platforms": [],
+	"platforms": [{"name": "github", "link" : "https://github.com/Jimmt/FBLA2015"}],
 	"tools": ["Java", "libGDX"],
 },
 {
@@ -47,7 +47,7 @@ var projects = [
 	"name": "Positive Posture",
 	"ref": "positive_posture",
 	"description": "<b>Made during Dubhacks 2016\n</b>Made during a 24-hour hackathon, Positive Posture is a desktop application that monitors your webcam and sends you an alert if you have bad posture by analyzing your facial position.",
-	"platforms": [],
+	"platforms": [{"name": "github", "link" : "https://github.com/Jimmt/PositivePosture"}],
 	"tools": ["Java", "libGDX", "Microsoft Emotion API", "Webcam Capture API"]
 }
 ];
@@ -185,13 +185,24 @@ function showProject(index){
 		if(project.platforms[i].name == "google_play"){
 			var playLink = document.createElement("a");
 			playLink.target = "_blank";
-			playLink.className = "platformLink";
+			playLink.className = "googleplay_button";
 			playLink.href = "https://play.google.com/store/apps/details?id=" + project.platforms[i].package;
 			var playImage = document.createElement("img");
 			playImage.src = "https://developer.android.com/images/brand/en_app_rgb_wo_60.png";
 			playImage.alt = "Android app on Google Play";
 			playLink.appendChild(playImage);
-			rightSide.appendChild(playLink);
+			platformContainer.appendChild(playLink);
+		} else if(project.platforms[i].name == "github"){
+			var githubButton = document.createElement("a");
+			githubButton.target = "_blank";
+			githubButton.className = "github_button";
+			githubButton.href = project.platforms[i].link;
+			var githubImage = document.createElement("img");
+			githubImage.src = "images/contact/github_black.png";
+			githubImage.alt = "Github Repository";
+			githubImage.className = "github_image";
+			githubButton.appendChild(githubImage);
+			platformContainer.appendChild(githubButton);
 		}
 	}
 
