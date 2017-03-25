@@ -60,8 +60,16 @@ var toolLinks = [
 	{"name":"Google Play Game Services", "link":"https://developers.google.com/games/services/"},
 ];
 
+window.onbeforeunload = function(event) {
+	for(var i = 0; i < projects.length; i++){
+		if(document.location.hash == "#" + projects[i].ref){
+			showProject(i);
+
+		}
+	}
+};
 window.onpopstate = function(event)
-{
+{console.log(document.location.hash);
 	if(document.location.hash == ""){
 		document.location.reload();
 	} else {
