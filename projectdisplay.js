@@ -116,27 +116,21 @@ for (var i = 0; i < projects.length; i++) {
     var projectButton = document.createElement("a");
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
+
     projectButton.appendChild(imagesCache[i]);
-    projectButton.appendChild(image);
+
     projectsContainer.appendChild(projectButton);
+
+    var container = document.createElement("div");
+    container.className = "projectButtonTextContainer";
+    container.appendChild(image);
 
     var p = document.createElement("p");
     p.className = "projectButtonText";
     var text = document.createTextNode(projects[i].name);
     p.appendChild(text);
-    projectButton.appendChild(p);
-
-
-
-    // if(i == 0){
-    // 	var tr1 = table.insertRow();
-    // 	var td2 = tr1.insertCell();
-
-    // 	td2.setAttribute("colSpan", projects.length);
-    // 	td2.id = "display";
-    // 	updatePanel(0, projects[0], td2);
-    // };
-
+    container.appendChild(p);
+    projectButton.appendChild(container);
 }
 
 var buttonSelectedColor = "var(--highlight-color)";
@@ -232,8 +226,8 @@ function showProject(index) {
                 break;
             }
         }
-        if(linkToAdd == ""){
-        	break;
+        if (linkToAdd == "") {
+            break;
         }
         toolsText += project.tools[i];
 
