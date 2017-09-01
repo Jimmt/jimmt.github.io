@@ -117,7 +117,15 @@ for (var i = 0; i < projects.length; i++) {
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
 
-    projectButton.appendChild(imagesCache[i]);
+    var mockup = document.createElement("div");
+    mockup.className = "mockup";
+    var phoneImage = new Image();
+    phoneImage.className = "phone";
+    phoneImage.src = "images/phone.png";
+    mockup.appendChild(phoneImage);
+    mockup.appendChild(imagesCache[i]);
+
+    projectButton.appendChild(mockup);
 
     projectsContainer.appendChild(projectButton);
 
