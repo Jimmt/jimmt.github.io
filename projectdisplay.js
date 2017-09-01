@@ -117,6 +117,7 @@ for (var i = 0; i < projects.length; i++) {
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
     projectButton.appendChild(imagesCache[i]);
+    projectButton.appendChild(image);
     projectsContainer.appendChild(projectButton);
 
     var p = document.createElement("p");
