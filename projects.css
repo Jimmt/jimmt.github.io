@@ -57,7 +57,7 @@
 }
 
 .screen {
-	opacity: 0.0;
+    opacity: 0.0;
     -moz-opacity: 1.0;
     -webkit-opacity: 1.0;
     transition: opacity 1s;
@@ -65,9 +65,30 @@
     -moz-transition: opacity 1s;
 }
 
+#preview_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mockup_preview {
-	max-width: 50px;
-	max-height: 50px;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 15px 15px 0px 0px;
+}
+
+.mockup_preview:hover {
+    opacity: 0.20;
+    -moz-opacity: 20%;
+    -webkit-opacity: 20%;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.preview_selected {
+    opacity: 0.20;
+    -moz-opacity: 20%;
+    -webkit-opacity: 20%;
 }
 
 .hidden {
@@ -79,8 +100,6 @@
 .screen {}
 
 .project_button .mockup:hover {
-    /*border: 2px var(--highlight-color) solid;*/
-    /*    background-color: var(--highlight-color);*/
     opacity: 0.20;
     -moz-opacity: 20%;
     -webkit-opacity: 20%;

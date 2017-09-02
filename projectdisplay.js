@@ -217,15 +217,20 @@ function showProject(index) {
         projects[index].extraImages[i].style.opacity = '1.0';
     }
 
-    var previewContainer = document.createElement("div");
-    var mockupPreview = new Image();
-    mockupPreview.className = "mockup_preview";
-    mockupPreview.src = "images/projects/" + projects[index].ref + "_screen.png";
-    previewContainer.appendChild(mockupPreview);
-    imageContainer.appendChild(previewContainer);
-    mockupPreview.onclick = function(){
-    	imageContainer.removeChild(imageContainer.querySelector(".screen"));
-    	imageContainer.insertBefore(mockups[index], previewContainer);
+    if (projects[index].extraImages.length > 0) {
+        var previewContainer = document.createElement("div");
+        previewContainer.id = "preview_container";
+        var mockupPreview = new Image();
+        mockupPreview.className = "mockup_preview preview_selected";
+        mockupPreview.src = "images/projects/" + projects[index].ref + "_screen.png";
+        previewContainer.appendChild(mockupPreview);
+        imageContainer.appendChild(previewContainer);
+        mockupPreview.onclick = function() {
+            imageContainer.removeChild(imageContainer.querySelector(".screen"));
+            imageContainer.insertBefore(mockups[index], previewContainer);
+            document.querySelector(".preview_selected").classList.remove("preview_selected");
+            mockupPreview.classList.add("preview_selected");
+        }
     }
     for (var i = 0; i < projects[index].extraImages.length; i++) {
         var preview = new Image();
@@ -233,9 +238,11 @@ function showProject(index) {
         preview.src = projects[index].extraImages[i].src;
         previewContainer.appendChild(preview);
         var img = projects[index].extraImages[i];
-        preview.onclick = function(){
-        	imageContainer.removeChild(mockups[index]);
-        	imageContainer.insertBefore(img, previewContainer);
+        preview.onclick = function() {
+            imageContainer.removeChild(mockups[index]);
+            imageContainer.insertBefore(img, previewContainer);
+            document.querySelector(".preview_selected").classList.remove("preview_selected");
+            preview.classList.add("preview_selected");
         }
     }
 
