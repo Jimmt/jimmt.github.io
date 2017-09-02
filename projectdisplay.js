@@ -135,7 +135,8 @@ for (var i = 0; i < projects.length; i++) {
     projects[i].extraImages = [];
     for (var j = 0; j < projects[i].pics - 1; j++) {
         var extraImage = new Image();
-        extraImage.className = "screen"
+        extraImage.className = "screen";
+        extraImage.opacity = 0.0;
         var url = "images/projects/" + projects[i].ref + "_screen" + (j + 1) + ".png";
         var nmurl = "images/projects/" + projects[i].ref + "_screen" + (j + 1) + "-nm.png";
         imageExists(url, function(exists) {
@@ -213,27 +214,30 @@ function showProject(index) {
     page.appendChild(imageContainer);
     imageContainer.appendChild(mockups[index]);
     for (var i = 0; i < projects[index].extraImages.length; i++) {
-        // projects[index].extraImages[i].classList.add("hidden");
+        projects[index].extraImages[i].style.opacity = '1.0';
     }
 
-    var nextButton = document.createElement("div");
-    var prevButton = document.createElement("div");
-    nextButton.innerHTML = ">";
-    prevButton.innerHTML = "<";
-    nextButton.className = "slideshow_button";
-    prevButton.className = "slideshow_button";
-    nextButton.onclick = function() {
-        imageContainer.removeChild(mockups[index]);
-        imageContainer.insertBefore(projects[index].extraImages[0], buttonContainer);
-    };
-    prevButton.onclick = function() {
-        imageContainer.insertBefore(mockups[index], buttonContainer);
-        imageContainer.removeChild(projects[index].extraImages[0]);
+    var previewContainer = document.createElement("div");
+    var mockupPreview = new Image();
+    mockupPreview.className = "mockup_preview";
+    mockupPreview.src = "images/projects/" + projects[index].ref + "_screen.png";
+    previewContainer.appendChild(mockupPreview);
+    imageContainer.appendChild(previewContainer);
+    mockupPreview.onclick = function(){
+    	imageContainer.removeChild(imageContainer.querySelector(".screen"));
+    	imageContainer.insertBefore(mockups[index], previewContainer);
     }
-    var buttonContainer = document.createElement("div");
-    buttonContainer.appendChild(prevButton);
-    buttonContainer.appendChild(nextButton);
-    imageContainer.appendChild(buttonContainer);
+    for (var i = 0; i < projects[index].extraImages.length; i++) {
+        var preview = new Image();
+        preview.className = "mockup_preview";
+        preview.src = projects[index].extraImages[i].src;
+        previewContainer.appendChild(preview);
+        var img = projects[index].extraImages[i];
+        preview.onclick = function(){
+        	imageContainer.removeChild(mockups[index]);
+        	imageContainer.insertBefore(img, previewContainer);
+        }
+    }
 
     var rightSide = document.createElement("div");
     rightSide.id = "project_panel_right";

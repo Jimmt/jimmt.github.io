@@ -56,14 +56,27 @@
     -moz-transition: opacity 1s;
 }
 
-.hidden {
+.screen {
 	opacity: 0.0;
-	-moz-opacity: 0%;
-	-webkit-opacity: 0%;
+    -moz-opacity: 1.0;
+    -webkit-opacity: 1.0;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
 }
 
-.screen {
+.mockup_preview {
+	max-width: 50px;
+	max-height: 50px;
 }
+
+.hidden {
+    opacity: 0.0;
+    -moz-opacity: 0%;
+    -webkit-opacity: 0%;
+}
+
+.screen {}
 
 .project_button .mockup:hover {
     /*border: 2px var(--highlight-color) solid;*/
@@ -75,7 +88,8 @@
     cursor: hand;
 }
 
-.phone,.screen {
+.phone,
+.screen {
     max-width: 90%;
     max-height: 70%;
 }
@@ -85,8 +99,8 @@
 }
 
 .project_screen {
-    width: 81.5%;
-    height: 92%;
+    width: 78%;
+    height: 92.5%;
     position: absolute;
     left: 9.25%;
     top: 4.05%;
@@ -161,10 +175,10 @@
 }
 
 #image_container {
-	margin-top: 50px;
+    margin-top: 50px;
 }
 
 .slideshow_button {
-	display: inline-block;
-	font-size: 100pt;
+    display: inline-block;
+    font-size: 100pt;
 }
