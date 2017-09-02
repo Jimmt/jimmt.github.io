@@ -56,6 +56,15 @@
     -moz-transition: opacity 1s;
 }
 
+.hidden {
+	opacity: 0.0;
+	-moz-opacity: 0%;
+	-webkit-opacity: 0%;
+}
+
+.screen {
+}
+
 .project_button .mockup:hover {
     /*border: 2px var(--highlight-color) solid;*/
     /*    background-color: var(--highlight-color);*/
@@ -77,7 +86,7 @@
 
 .project_screen {
     width: 81.5%;
-    height: 91.9%;
+    height: 92%;
     position: absolute;
     left: 9.25%;
     top: 4.05%;

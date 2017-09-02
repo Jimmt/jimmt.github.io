@@ -212,6 +212,9 @@ function showProject(index) {
     imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
     page.appendChild(imageContainer);
     imageContainer.appendChild(mockups[index]);
+    for (var i = 0; i < projects[index].extraImages.length; i++) {
+        // projects[index].extraImages[i].classList.add("hidden");
+    }
 
     var nextButton = document.createElement("div");
     var prevButton = document.createElement("div");
@@ -224,7 +227,8 @@ function showProject(index) {
         imageContainer.insertBefore(projects[index].extraImages[0], buttonContainer);
     };
     prevButton.onclick = function() {
-
+        imageContainer.insertBefore(mockups[index], buttonContainer);
+        imageContainer.removeChild(projects[index].extraImages[0]);
     }
     var buttonContainer = document.createElement("div");
     buttonContainer.appendChild(prevButton);
