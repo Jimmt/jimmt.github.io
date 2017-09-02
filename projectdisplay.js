@@ -7,7 +7,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jumpbuttonstudio.puckslide.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": 1
+        "pics": ["horizontal"]
     },
     {
         "name": "Totem Stack",
@@ -16,7 +16,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jbs.totemgame.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": 1
+        "pics": ["vertical"]
     },
     {
         "name": "Smite Training",
@@ -25,7 +25,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jimmt.smitepractice.android" }, { "name": "github", "link": "https://github.com/Jimmt/Smite-Training" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": 1
+        "pics": ["horizontal"]
     },
     {
         "name": "Hologram Clock",
@@ -34,7 +34,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jimmt.HologramClock.android" }, { "name": "github", "link": "https://github.com/Jimmt/HologramClock" }],
         "tools": ["Java", "libGDX"],
         "type": "mobile",
-        "pics": 2
+        "pics": ["horizontal", "horizontal"]
     },
     {
         "name": "Infection: FBLA 2015",
@@ -43,7 +43,7 @@ var projects = [{
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/FBLA2015" }],
         "tools": ["Java", "libGDX"],
         "type": "desktop",
-        "pics": 1
+        "pics": ["horizontal"]
     },
     {
         "name": "Rainbow Hippie 2",
@@ -52,7 +52,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jbs.rh2.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": 1
+        "pics": ["horizontal"]
     },
     {
         "name": "Positive Posture",
@@ -61,7 +61,7 @@ var projects = [{
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/PositivePosture" }],
         "tools": ["Java", "libGDX", "Microsoft Emotion API", "Webcam Capture API"],
         "type": "desktop",
-        "pics": 1
+        "pics": ["horizontal"]
     },
     {
         "name": "Key Demon",
@@ -70,7 +70,7 @@ var projects = [{
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/KeyDemon" }, { "name": "web", "link": "https://jimmt.github.io/KeyDemon" }],
         "tools": ["HTML", "CSS", "Javascript"],
         "type": "web",
-        "pics": 1
+        "pics": ["horizontal"]
     }
 ];
 
@@ -128,12 +128,12 @@ var projectsContainer = document.getElementById("projects_container");
 for (var i = 0; i < projects.length; i++) {
     var fullImage = new Image();
     fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
-    // fullImage.id = "display_screen";
-    fullImage.className = "project_screen";
+    // fullImage.id = "display_screen"; 
+    fullImage.className = (projects[i].pics[0] == "horizontal") ? "project_screen" : "project_screen_vertical";
     imagesCache.push(fullImage);
 
     projects[i].extraImages = [];
-    for (var j = 0; j < projects[i].pics - 1; j++) {
+    for (var j = 0; j < projects[i].pics.length - 1; j++) {
         var extraImage = new Image();
         extraImage.className = "screen";
         extraImage.opacity = 0.0;
@@ -159,13 +159,22 @@ for (var i = 0; i < projects.length; i++) {
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
 
+    var phoneImageWrapper = document.createElement("div");
     var mockup = document.createElement("div");
     mockup.className = "mockup";
     var phoneImage = new Image();
     phoneImage.className = "phone";
-    phoneImage.src = "images/phone.png";
-    mockup.appendChild(phoneImage);
-    mockup.appendChild(imagesCache[i]);
+    phoneImageWrapper.appendChild(phoneImage);
+    phoneImageWrapper.className = "phone_image_wrapper";
+    if (projects[i].pics[0] == "horizontal") {
+        phoneImage.src = "images/phone.png";
+    } else {
+    	phoneImageWrapper.className = "phone_image_wrapper_vertical";
+        phoneImage.src = "images/phone_vertical.png";
+        phoneImage.className = "phone_vertical";
+    }
+    mockup.appendChild(phoneImageWrapper);
+    phoneImageWrapper.appendChild(imagesCache[i]);
     mockups.push(mockup);
 
     projectButton.appendChild(mockup);

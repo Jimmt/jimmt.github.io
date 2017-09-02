@@ -21,6 +21,7 @@
     padding: 10px;
     width: 45%;
     height: 400px;
+    max-height: 400px;
     text-align: center;
     /*background-color: var(--highlight-color-2);*/
     /*border: 2px rgba(1,1,1,0) solid;*/
@@ -54,6 +55,7 @@
     transition: opacity 1s;
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
+    max-height: 80%;
 }
 
 .screen {
@@ -107,10 +109,24 @@
     cursor: hand;
 }
 
-.phone,
+.phone_image_wrapper,
 .screen {
     max-width: 90%;
     max-height: 70%;
+}
+
+.phone_image_wrapper_vertical {
+	max-width: 90%;
+    max-height: 70%;
+}
+
+.phone {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.phone_vertical {
+    height: 80%
 }
 
 .screen_container {
@@ -118,17 +134,26 @@
 }
 
 .project_screen {
-    width: 78%;
+    width: 75%;
     height: 92.5%;
     position: absolute;
-    left: 9.25%;
+    left: 7.5%;
     top: 4.05%;
+}
+
+.project_screen_vertical {
+    width: 21%;
+    height: 82%;
+    position: absolute;
+    left: 34.5%;
+    top: 8%;
 }
 
 @keyframes hoverFadeIn {
     from {
         background-color: none;
     }
+
     to {
         background-color: SlateGray;
     }
@@ -159,8 +184,10 @@
     font-size: 19px;
     text-decoration: none;
     /*font-style: italic;*/
+
     line-height: 1.5em;
     /*padding: 0px 10px 0px 10px;*/
+
     white-space: pre-wrap;
     color: var(--font-color);
     clear: both;
