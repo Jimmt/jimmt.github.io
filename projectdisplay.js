@@ -6,6 +6,7 @@ var projects = [{
         "description": "<b>Made as a part of Jumpbutton Studio\n</b>Puck Slide is an addicting arcade game about sliding a hockey puck across snow and mud with precision. Integrated with Google Play Game Services for high scores and achievements.",
         "platforms": [{ "name": "google_play", "package": "com.jumpbuttonstudio.puckslide.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
+        "type":"mobile"
     },
     {
         "name": "Totem Stack",
@@ -13,6 +14,7 @@ var projects = [{
         "description": "<b>Made as a part of Jumpbutton Studio\n</b>Totem Stack is an arcade game about stacking randomly falling totems and build a stack higher and higher until you reach the skies. Diverse gameplay with powerups, random events, and a dynamic background, as well as integration with Google Play Game Services for achievements and high scores.",
         "platforms": [{ "name": "google_play", "package": "com.jbs.totemgame.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
+        "type": "mobile"
     },
     {
         "name": "Smite Training",
@@ -20,6 +22,7 @@ var projects = [{
         "description": "<b>150,000+ downloads\n</b>Smite Training is a game about practicing the smiting skill from League of Legends in realistic scenarios. Features different smite damage on both dragon and baron, with multiplayer on the same phone supported. Integrated with Google Play Game Services for high scores.",
         "platforms": [{ "name": "google_play", "package": "com.jimmt.smitepractice.android" }, { "name": "github", "link": "https://github.com/Jimmt/Smite-Training" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
+        "type": "mobile"
     },
     {
         "name": "Hologram Clock",
@@ -27,6 +30,7 @@ var projects = [{
         "description": "<b>20,000+ downloads\n</b>Hologram Clock is an app that displays a holographic clockface for those with a four-sided plastic apparatus (easily made from tutorials online). Features many different vibrant particle effects with color options.",
         "platforms": [{ "name": "google_play", "package": "com.jimmt.HologramClock.android" }, { "name": "github", "link": "https://github.com/Jimmt/HologramClock" }],
         "tools": ["Java", "libGDX"],
+        "type": "mobile"
     },
     {
         "name": "Infection: FBLA 2015",
@@ -34,6 +38,7 @@ var projects = [{
         "description": "<b>Made for FBLA Computer Game & Simulation 2015\n</b>Infection is a game designed to teach the user about computer security. The user pilots a spaceship and shoots enemies while navigating through mutliple levels with unique boss fights. Features different visual and functional upgrades in the game.",
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/FBLA2015" }],
         "tools": ["Java", "libGDX"],
+        "type": "desktop"
     },
     {
         "name": "Rainbow Hippie 2",
@@ -41,20 +46,23 @@ var projects = [{
         "description": "<b>Made as a part of Jumpbutton Studio\n</b>Rainbow Hippie 2 is a game where the player shoots rainbows and dodges obstacles, fighting a variety of monsters along the way. There are a variety of levels to visit, like the skies, ocean, and underground as the player journeys through the game!",
         "platforms": [{ "name": "google_play", "package": "com.jbs.rh2.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
+        "type": "mobile"
     },
     {
         "name": "Positive Posture",
         "ref": "positive_posture",
         "description": "<b>Made during Dubhacks 2016\n</b>Made during a 24-hour hackathon, Positive Posture is a desktop application that monitors your webcam and sends you an alert if you have bad posture by analyzing your facial position.",
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/PositivePosture" }],
-        "tools": ["Java", "libGDX", "Microsoft Emotion API", "Webcam Capture API"]
+        "tools": ["Java", "libGDX", "Microsoft Emotion API", "Webcam Capture API"],
+        "type": "desktop"
     },
     {
         "name": "Key Demon",
         "ref": "key_demon",
         "description": "Key Demon is an online typing speed tester with choice of random words or generated random letters.",
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/KeyDemon" }, { "name": "web", "link": "https://jimmt.github.io/KeyDemon" }],
-        "tools": ["HTML", "CSS", "Javascript"]
+        "tools": ["HTML", "CSS", "Javascript"],
+        "type": "web"
     }
 ];
 
@@ -95,6 +103,7 @@ window.onhashchange = function(event) {
 };
 
 var imagesCache = [];
+var mockups = [];
 
 var added = false;
 
@@ -124,6 +133,7 @@ for (var i = 0; i < projects.length; i++) {
     phoneImage.src = "images/phone.png";
     mockup.appendChild(phoneImage);
     mockup.appendChild(imagesCache[i]);
+    mockups.push(mockup);
 
     projectButton.appendChild(mockup);
 
@@ -169,7 +179,7 @@ function showProject(index) {
     imageContainer.id = "image_container";
     imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
     page.appendChild(imageContainer);
-    imageContainer.appendChild(imagesCache[index]);
+    imageContainer.appendChild(mockups[index]);
 
     var rightSide = document.createElement("div");
     rightSide.id = "project_panel_right";
