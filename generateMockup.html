@@ -5,39 +5,75 @@
         <span>Select file</span>
         <button id="download">Download</button>
     </label>
+    <select id="selector">
+        <option value="phone">phone</option>
+        <option value="phone-vertical">phone (vertical)</option>
+    </select>
 </body>
 <script>
 var projects = ["puckslide"];
 var links = [];
 
 document.getElementById("file-selector").onchange = function(e) {
-	links = [];
+    links = [];
+    setValues();
     var files = e.target.files;
     for (var i = 0, f; f = files[i]; i++) {
         console.log(f);
         console.log(f.name);
-        generateMockup("images/projects/", f.name, "images/phone.png");
+        generateMockup("images/projects/", f.name, phoneImage);
     }
-
 }
 
-document.getElementById("download").onclick = function(){
-	for(var i =0 ; i < links.length; i++){
-		links[i].click();
-	}
+function setValues() {
+    var value = document.getElementById("selector").value;
+   
+    if (value == "phone") {
+        width = 814;
+        height = 407;
+        offsetX = 69;
+        offsetY = 16;
+        screenWidth = 665;
+        screenHeight = 375;
+        phoneImage = "images/phone.png";
+    } else if (value == "phone-vertical") {
+        width = 407;
+        height = 814;
+        offsetX = 15;
+        offsetY = 68.5;
+        screenWidth = 375;
+        screenHeight = 665;
+        phoneImage = "images/phone_vertical.png";
+    }
 }
+
+document.getElementById("download").onclick = function() {
+    for (var i = 0; i < links.length; i++) {
+        links[i].click();
+    }
+}
+
+var width = 814,
+    height = 407;
+var offsetX = 69,
+    offsetY = 16,
+    screenWidth = 665,
+    screenHeight = 375;
+var phoneImage = "images/phone.png";
 
 function generateMockup(screenPath, screenSrc, phoneSrc) {
     var c = document.getElementById("myCanvas");
+    c.width = width;
+    c.height = height;
     var ctx = c.getContext("2d");
     var imageObj1 = new Image();
     var imageObj2 = new Image();
     imageObj1.src = phoneSrc;
     imageObj1.onload = function() {
-        ctx.drawImage(imageObj1, 0, 0, 814, 407);
+        ctx.drawImage(imageObj1, 0, 0, width, height);
         imageObj2.src = screenPath + screenSrc;
         imageObj2.onload = function() {
-            ctx.drawImage(imageObj2, 69, 16, 665, 375);
+            ctx.drawImage(imageObj2, offsetX, offsetY, screenWidth, screenHeight);
             var img = c.toDataURL("image/png");
             var output = new Image();
             output.src = img;
@@ -48,6 +84,7 @@ function generateMockup(screenPath, screenSrc, phoneSrc) {
             aLink.download = screenSrc.replace(".png", "") + "_mock.png";
             aLink.href = image;
             document.getElementById("body").appendChild(aLink);
+            aLink.style = "display:none";
             links.push(aLink);
             // var dl = document.createElement("a");
             // dl.innerHTML = "Download " + screenSrc;

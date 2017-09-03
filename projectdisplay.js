@@ -3,7 +3,7 @@ var buttons = document.getElementsByClassName("project_button");
 var projects = [{
         "name": "Puck Slide",
         "ref": "puckslide",
-        "description": "<b>Made as a part of Jumpbutton Studio\n</b>Puck Slide is an addicting arcade game about sliding a hockey puck across snow and mud with precision. Integrated with Google Play Game Services for high scores and achievements.",
+        "description": "<b>A Jumpbutton Studio Game\n</b>Puck Slide is an addicting arcade game about sliding a hockey puck across snow and mud with precision. Integrated with Google Play Game Services for high scores and achievements.",
         "platforms": [{ "name": "google_play", "package": "com.jumpbuttonstudio.puckslide.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
@@ -12,7 +12,7 @@ var projects = [{
     {
         "name": "Totem Stack",
         "ref": "totems",
-        "description": "<b>Made as a part of Jumpbutton Studio\n</b>Totem Stack is an arcade game about stacking randomly falling totems and build a stack higher and higher until you reach the skies. Diverse gameplay with powerups, random events, and a dynamic background, as well as integration with Google Play Game Services for achievements and high scores.",
+        "description": "<b>A Jumpbutton Studio Game\n</b>Totem Stack is an arcade game about stacking randomly falling totems and build a stack higher and higher until you reach the skies. Diverse gameplay with powerups, random events, and a dynamic background, as well as integration with Google Play Game Services for achievements and high scores.",
         "platforms": [{ "name": "google_play", "package": "com.jbs.totemgame.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
@@ -48,7 +48,7 @@ var projects = [{
     {
         "name": "Rainbow Hippie 2",
         "ref": "rh2",
-        "description": "<b>Made as a part of Jumpbutton Studio\n</b>Rainbow Hippie 2 is a game where the player shoots rainbows and dodges obstacles, fighting a variety of monsters along the way. There are a variety of levels to visit, like the skies, ocean, and underground as the player journeys through the game!",
+        "description": "<b>A Jumpbutton Studio Game\n</b>Rainbow Hippie 2 is a game where the player shoots rainbows and dodges obstacles, fighting a variety of monsters along the way. There are a variety of levels to visit, like the skies, ocean, and underground as the player journeys through the game!",
         "platforms": [{ "name": "google_play", "package": "com.jbs.rh2.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
@@ -163,12 +163,20 @@ for (var i = 0; i < projects.length; i++) {
     var projectButton = document.createElement("a");
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
-
     
-
-    projectButton.appendChild(mockups[i]);
-
+    var screen = imagesCache[i];
+    screen.className = "screen_bg";
+    projectButton.appendChild(screen);
+    projectButton.onmouseenter = function(){
+    	this.childNodes[0].classList.add("hover");
+    };
+    projectButton.onmouseleave = function(){
+    	this.childNodes[0].classList.remove("hover");
+    }
     projectsContainer.appendChild(projectButton);
+    var overlay = document.createElement("div");
+    overlay.className = "overlay";
+    projectButton.appendChild(overlay);
 
     var container = document.createElement("div");
     container.className = "projectButtonTextContainer";
@@ -208,7 +216,6 @@ function showProject(index) {
 
     var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
-    imageContainer.style = "display:inline-block; width: 50%; height: 100%; text-align: center; vertical-align: middle;";
     page.appendChild(imageContainer);
     imageContainer.appendChild(mockups[index]);
     for (var i = 0; i < projects[index].extraImages.length; i++) {
@@ -246,7 +253,6 @@ function showProject(index) {
 
     var rightSide = document.createElement("div");
     rightSide.id = "project_panel_right";
-    rightSide.style = "display:inline-block; width: 50%; height: 100%; overflow:auto; margin-top: 10px; vertical-align: middle;";
     page.appendChild(rightSide);
 
     var name = document.createElement("p");

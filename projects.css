@@ -18,16 +18,17 @@
 
 .project_button {
     display: inline-block;
+    position: relative;
     padding: 10px;
-    width: 45%;
-    height: 400px;
+    width: 640px;
+    height: 360px;
     max-height: 400px;
     text-align: center;
     /*background-color: var(--highlight-color-2);*/
     /*border: 2px rgba(1,1,1,0) solid;*/
     text-decoration: none;
     vertical-align: top;
-    margin: 5px 5px 5px 5px;
+    margin: 10px;
 }
 
 .github_button {
@@ -46,6 +47,32 @@
     margin: 0px 5px 0px 5px;
 }
 
+.overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	opacity: 0.4;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
+}
+
+.screen_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    -moz-opacity: 0.2;
+    -webkit-opacity: 0.2;
+
+    transition: opacity 0.75s, box-shadow 0.75s;
+    -webkit-transition: opacity 0.75s, box-shadow 0.75s;
+    -moz-transition: opacity 0.75s, box-shadow 0.75s;
+    left: 0px;
+    top: 0px;
+}
+
 .mockup {
     position: relative;
     z-index: 2;
@@ -55,7 +82,8 @@
     transition: opacity 1s;
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 70%;
 }
 
 .screen {
@@ -77,6 +105,7 @@
     max-width: 100px;
     max-height: 100px;
     margin: 15px 15px 0px 0px;
+    opacity: 0.2;
 }
 
 .mockup_preview:hover {
@@ -88,9 +117,9 @@
 }
 
 .preview_selected {
-    opacity: 0.20;
-    -moz-opacity: 20%;
-    -webkit-opacity: 20%;
+    opacity: 1.0;
+    -moz-opacity: 100%;
+    -webkit-opacity: 100%;
 }
 
 .hidden {
@@ -101,12 +130,13 @@
 
 .screen {}
 
-.project_button .mockup:hover {
-    opacity: 0.20;
-    -moz-opacity: 20%;
-    -webkit-opacity: 20%;
+.hover {
+    opacity: 0.40;
+    -moz-opacity: 40%;
+    -webkit-opacity: 40%;
     cursor: pointer;
     cursor: hand;
+    box-shadow: 2px 5px 15px black;
 }
 
 .phone_image_wrapper,
@@ -116,10 +146,10 @@
 }
 
 .phone_image_wrapper_vertical {
-	 /*width: 100%;*/
-	 max-width: 100%;
-	 /*height: 80%;*/
-	 max-height: 100%;
+    /*width: 100%;*/
+    max-width: 100%;
+    /*height: 80%;*/
+    max-height: 100%;
     /*display: inline-block;*/
 }
 
@@ -129,28 +159,12 @@
 }
 
 .phone_vertical {
-	max-width: 100%;
+    max-width: 100%;
     max-height: 100%;
 }
 
 .screen_container {
     position: relative;
-}
-
-.project_screen {
-    width: 75%;
-    height: 92.5%;
-    position: absolute;
-    left: 7.5%;
-    top: 4.05%;
-}
-
-.project_screen_vertical {
-    width: 23%;
-    height: 82%;
-    position: absolute;
-    left: 38.5%;
-    top: 8%;
 }
 
 @keyframes hoverFadeIn {
@@ -171,16 +185,20 @@
 
 .projectButtonText {
     font-family: "Clear-sans";
-    font-size: 20px;
-    margin-left: 5px;
+    font-size: 40px;
+    margin-left: 10px;
     color: var(--font-color);
 }
 
 .projectButtonTextContainer {
+	position: absolute;
+	z-index: 2;
     margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 #toolsText {
@@ -191,7 +209,6 @@
 
     line-height: 1.5em;
     /*padding: 0px 10px 0px 10px;*/
-
     white-space: pre-wrap;
     color: var(--font-color);
     clear: both;
@@ -220,12 +237,26 @@
 .project_icon {
     width: 50px;
     height: 50px;
-    margin-right: 5px;
+    margin-right: 10px;
     /*float: left;*/
 }
 
 #image_container {
     margin-top: 50px;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#project_panel_right {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    margin-top: 10px;
+    vertical-align: middle;
 }
 
 .slideshow_button {
