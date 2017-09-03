@@ -7,7 +7,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jumpbuttonstudio.puckslide.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": ["horizontal"]
+        "pics": 1
     },
     {
         "name": "Totem Stack",
@@ -16,7 +16,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jbs.totemgame.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": ["vertical"]
+        "pics": 1
     },
     {
         "name": "Smite Training",
@@ -25,7 +25,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jimmt.smitepractice.android" }, { "name": "github", "link": "https://github.com/Jimmt/Smite-Training" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": ["horizontal"]
+        "pics": 1
     },
     {
         "name": "Hologram Clock",
@@ -34,7 +34,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jimmt.HologramClock.android" }, { "name": "github", "link": "https://github.com/Jimmt/HologramClock" }],
         "tools": ["Java", "libGDX"],
         "type": "mobile",
-        "pics": ["horizontal", "horizontal"]
+        "pics": 2
     },
     {
         "name": "Infection: FBLA 2015",
@@ -43,7 +43,7 @@ var projects = [{
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/FBLA2015" }],
         "tools": ["Java", "libGDX"],
         "type": "desktop",
-        "pics": ["horizontal"]
+        "pics": 1
     },
     {
         "name": "Rainbow Hippie 2",
@@ -52,7 +52,7 @@ var projects = [{
         "platforms": [{ "name": "google_play", "package": "com.jbs.rh2.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
         "type": "mobile",
-        "pics": ["horizontal"]
+        "pics": 1
     },
     {
         "name": "Positive Posture",
@@ -61,7 +61,7 @@ var projects = [{
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/PositivePosture" }],
         "tools": ["Java", "libGDX", "Microsoft Emotion API", "Webcam Capture API"],
         "type": "desktop",
-        "pics": ["horizontal"]
+        "pics": 1
     },
     {
         "name": "Key Demon",
@@ -70,7 +70,7 @@ var projects = [{
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/KeyDemon" }, { "name": "web", "link": "https://jimmt.github.io/KeyDemon" }],
         "tools": ["HTML", "CSS", "Javascript"],
         "type": "web",
-        "pics": ["horizontal"]
+        "pics": 1
     }
 ];
 
@@ -129,7 +129,7 @@ for (var i = 0; i < projects.length; i++) {
     var fullImage = new Image();
     fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
     // fullImage.id = "display_screen"; 
-    fullImage.className = (projects[i].pics[0] == "horizontal") ? "project_screen" : "project_screen_vertical";
+    fullImage.className = "project_screen";
     imagesCache.push(fullImage);
 
     var mockup = new Image();
@@ -137,21 +137,26 @@ for (var i = 0; i < projects.length; i++) {
     mockup.className = "mockup";
     mockups.push(mockup);
 
-    projects[i].extraImages = [];
-    for (var j = 0; j < projects[i].pics.length - 1; j++) {
-        var extraImage = new Image();
-        extraImage.className = "screen";
-        extraImage.opacity = 0.0;
-        var url = "images/projects/" + projects[i].ref + "_screen" + (j + 1) + ".png";
-        var nmurl = "images/projects/" + projects[i].ref + "_screen" + (j + 1) + "-nm.png";
+    projects[i].images = [];
+    for (var j = 0; j < projects[i].pics; j++) {
+        if (j == 0) {
+            projects[i].images.push(mockup);
+            continue;
+        }
+        var projectImage = new Image();
+        projectImage.className = "screen";
+        projectImage.opacity = 0.0;
+        var url = "images/projects/" + projects[i].ref + "_screen" + (j == 0 ? "" : j) + ".png";
+        var nmurl = "images/projects/" + projects[i].ref + "_screen" + (j == 0 ? "" : j) + "-nm.png";
+
         imageExists(url, function(exists) {
             if (exists) {
-                extraImage.src = url;
+                projectImage.src = url;
             } else {
-                extraImage.src = nmurl;
+                projectImage.src = nmurl;
             }
         });
-        projects[i].extraImages.push(extraImage);
+        projects[i].images.push(projectImage);
     }
 
 }
@@ -163,15 +168,15 @@ for (var i = 0; i < projects.length; i++) {
     var projectButton = document.createElement("a");
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
-    
+
     var screen = imagesCache[i];
     screen.className = "screen_bg";
     projectButton.appendChild(screen);
-    projectButton.onmouseenter = function(){
-    	this.childNodes[0].classList.add("hover");
+    projectButton.onmouseenter = function() {
+        this.childNodes[0].classList.add("hover");
     };
-    projectButton.onmouseleave = function(){
-    	this.childNodes[0].classList.remove("hover");
+    projectButton.onmouseleave = function() {
+        this.childNodes[0].classList.remove("hover");
     }
     projectsContainer.appendChild(projectButton);
     var overlay = document.createElement("div");
@@ -217,37 +222,36 @@ function showProject(index) {
     var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
     page.appendChild(imageContainer);
-    imageContainer.appendChild(mockups[index]);
-    for (var i = 0; i < projects[index].extraImages.length; i++) {
-        projects[index].extraImages[i].style.opacity = '1.0';
+    var mockup = projects[index].images[0];
+    imageContainer.appendChild(mockup);
+
+    for (var i = 0; i < projects[index].images.length; i++) {
+        projects[index].images[i].style.opacity = '1.0';
     }
 
-    if (projects[index].extraImages.length > 0) {
+    if (projects[index].images.length > 1) {
         var previewContainer = document.createElement("div");
         previewContainer.id = "preview_container";
-        var mockupPreview = new Image();
-        mockupPreview.className = "mockup_preview preview_selected";
-        mockupPreview.src = "images/projects/" + projects[index].ref + "_screen.png";
-        previewContainer.appendChild(mockupPreview);
         imageContainer.appendChild(previewContainer);
-        mockupPreview.onclick = function() {
-            imageContainer.removeChild(imageContainer.querySelector(".screen"));
-            imageContainer.insertBefore(mockups[index], previewContainer);
-            document.querySelector(".preview_selected").classList.remove("preview_selected");
-            mockupPreview.classList.add("preview_selected");
-        }
-    }
-    for (var i = 0; i < projects[index].extraImages.length; i++) {
-        var preview = new Image();
-        preview.className = "mockup_preview";
-        preview.src = projects[index].extraImages[i].src;
-        previewContainer.appendChild(preview);
-        var img = projects[index].extraImages[i];
-        preview.onclick = function() {
-            imageContainer.removeChild(mockups[index]);
-            imageContainer.insertBefore(img, previewContainer);
-            document.querySelector(".preview_selected").classList.remove("preview_selected");
-            preview.classList.add("preview_selected");
+
+        var currentIndex = 0;
+
+        for (var i = 0; i < projects[index].images.length; i++) {
+            var preview = new Image();
+            preview.className = "screen_preview";
+            if (i == 0) preview.classList.add("preview_selected");
+            preview.src = projects[index].images[i].src;
+            previewContainer.appendChild(preview);
+            preview.onclick = (function(i, preview) {
+                return function() {
+                    imageContainer.removeChild(imageContainer.childNodes[0]);
+                    imageContainer.insertBefore(projects[index].images[i], previewContainer);
+                    currentIndex = i;
+                    console.log(currentIndex);
+                    document.querySelector(".preview_selected").classList.remove("preview_selected");
+                    preview.classList.add("preview_selected");
+                }
+            })(i, preview);
         }
     }
 
