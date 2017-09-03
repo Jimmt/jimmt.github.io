@@ -1,0 +1,62 @@
+<body id="body">
+    <canvas id="myCanvas" width="814" height="407"></canvas>
+    <label>
+        <input id="file-selector" type="file" name="input-name" multiple />
+        <span>Select file</span>
+        <button id="download">Download</button>
+    </label>
+</body>
+<script>
+var projects = ["puckslide"];
+var links = [];
+
+document.getElementById("file-selector").onchange = function(e) {
+	links = [];
+    var files = e.target.files;
+    for (var i = 0, f; f = files[i]; i++) {
+        console.log(f);
+        console.log(f.name);
+        generateMockup("images/projects/", f.name, "images/phone.png");
+    }
+
+}
+
+document.getElementById("download").onclick = function(){
+	for(var i =0 ; i < links.length; i++){
+		links[i].click();
+	}
+}
+
+function generateMockup(screenPath, screenSrc, phoneSrc) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var imageObj1 = new Image();
+    var imageObj2 = new Image();
+    imageObj1.src = phoneSrc;
+    imageObj1.onload = function() {
+        ctx.drawImage(imageObj1, 0, 0, 814, 407);
+        imageObj2.src = screenPath + screenSrc;
+        imageObj2.onload = function() {
+            ctx.drawImage(imageObj2, 69, 16, 665, 375);
+            var img = c.toDataURL("image/png");
+            var output = new Image();
+            output.src = img;
+            var image = c.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.	
+
+            var aLink = document.createElement('a');
+            aLink.innerHTML = "download";
+            aLink.download = screenSrc.replace(".png", "") + "_mock.png";
+            aLink.href = image;
+            document.getElementById("body").appendChild(aLink);
+            links.push(aLink);
+            // var dl = document.createElement("a");
+            // dl.innerHTML = "Download " + screenSrc;
+            // dl.download = output.src;
+            // document.getElementsByTagName("body")[0].appendChild(dl);
+        }
+    };
+}
+// projects.forEach(function(project){
+// 	generateMockup("images/projects/" + project + "_screen.png", "images/phone.png");
+// });
+</script>

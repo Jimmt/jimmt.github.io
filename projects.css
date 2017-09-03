@@ -116,8 +116,11 @@
 }
 
 .phone_image_wrapper_vertical {
-	max-width: 90%;
-    max-height: 70%;
+	 /*width: 100%;*/
+	 max-width: 100%;
+	 /*height: 80%;*/
+	 max-height: 100%;
+    /*display: inline-block;*/
 }
 
 .phone {
@@ -126,7 +129,8 @@
 }
 
 .phone_vertical {
-    height: 80%
+	max-width: 100%;
+    max-height: 100%;
 }
 
 .screen_container {
@@ -142,10 +146,10 @@
 }
 
 .project_screen_vertical {
-    width: 21%;
+    width: 23%;
     height: 82%;
     position: absolute;
-    left: 34.5%;
+    left: 38.5%;
     top: 8%;
 }
 
@@ -183,7 +187,7 @@
     font-family: "Clear-sans";
     font-size: 19px;
     text-decoration: none;
-    /*font-style: italic;*/
+    /*font-style: italic;
 
     line-height: 1.5em;
     /*padding: 0px 10px 0px 10px;*/

@@ -132,6 +132,11 @@ for (var i = 0; i < projects.length; i++) {
     fullImage.className = (projects[i].pics[0] == "horizontal") ? "project_screen" : "project_screen_vertical";
     imagesCache.push(fullImage);
 
+    var mockup = new Image();
+    mockup.src = "images/projects/" + projects[i].ref + "_screen_mock.png";
+    mockup.className = "mockup";
+    mockups.push(mockup);
+
     projects[i].extraImages = [];
     for (var j = 0; j < projects[i].pics.length - 1; j++) {
         var extraImage = new Image();
@@ -159,25 +164,9 @@ for (var i = 0; i < projects.length; i++) {
     projectButton.href = "#" + projects[i].ref;
     projectButton.className = "project_button";
 
-    var phoneImageWrapper = document.createElement("div");
-    var mockup = document.createElement("div");
-    mockup.className = "mockup";
-    var phoneImage = new Image();
-    phoneImage.className = "phone";
-    phoneImageWrapper.appendChild(phoneImage);
-    phoneImageWrapper.className = "phone_image_wrapper";
-    if (projects[i].pics[0] == "horizontal") {
-        phoneImage.src = "images/phone.png";
-    } else {
-    	phoneImageWrapper.className = "phone_image_wrapper_vertical";
-        phoneImage.src = "images/phone_vertical.png";
-        phoneImage.className = "phone_vertical";
-    }
-    mockup.appendChild(phoneImageWrapper);
-    phoneImageWrapper.appendChild(imagesCache[i]);
-    mockups.push(mockup);
+    
 
-    projectButton.appendChild(mockup);
+    projectButton.appendChild(mockups[i]);
 
     projectsContainer.appendChild(projectButton);
 
