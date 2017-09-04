@@ -218,11 +218,12 @@ function showProject(index) {
     var storStyle = page.style;
     page.innerHTML = "";
     page.style = storStyle;
-
-    createProjectDescription(page, projects[index]);
-
-    var imageContainer = document.createElement("div");
+	
+	var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
+    
+    createProjectDescription(page, projects[index], imageContainer);
+    
     page.appendChild(imageContainer);
     var mockup = projects[index].images[0];
     imageContainer.appendChild(mockup);
@@ -230,35 +231,9 @@ function showProject(index) {
     for (var i = 0; i < projects[index].images.length; i++) {
         projects[index].images[i].style.opacity = '1.0';
     }
-
-    if (projects[index].images.length > 1) {
-        var previewContainer = document.createElement("div");
-        previewContainer.id = "preview_container";
-        imageContainer.appendChild(previewContainer);
-
-        var currentIndex = 0;
-
-        for (var i = 0; i < projects[index].images.length; i++) {
-            var preview = new Image();
-            preview.className = "screen_preview";
-            if (i == 0) preview.classList.add("preview_selected");
-            preview.src = projects[index].images[i].src;
-            previewContainer.appendChild(preview);
-            preview.onclick = (function(i, preview) {
-                return function() {
-                    imageContainer.removeChild(imageContainer.childNodes[0]);
-                    imageContainer.insertBefore(projects[index].images[i], previewContainer);
-                    currentIndex = i;
-                    console.log(currentIndex);
-                    document.querySelector(".preview_selected").classList.remove("preview_selected");
-                    preview.classList.add("preview_selected");
-                }
-            })(i, preview);
-        }
-    }
 }
 
-function createProjectDescription(page, project){
+function createProjectDescription(page, project, imageContainer){
 	var rightSide = document.createElement("div");
     rightSide.id = "project_panel";
     page.appendChild(rightSide);
@@ -337,4 +312,35 @@ function createProjectDescription(page, project){
 
     var descrip = document.getElementById("descriptionText");
     descrip.innerHTML = project.description;
+
+     if (project.images.length > 1) {
+        var previewContainer = document.createElement("div");
+        previewContainer.id = "preview_container";
+        rightSide.appendChild(previewContainer);
+
+        var previewContainerText = document.createElement("p");
+        previewContainerText.innerHTML = "Images";
+        previewContainerText.id = "preview_container_text";
+        previewContainer.appendChild(previewContainerText);
+
+        var currentIndex = 0;
+
+        for (var i = 0; i < project.images.length; i++) {
+            var preview = new Image();
+            preview.className = "screen_preview";
+            if (i == 0) preview.classList.add("preview_selected");
+            preview.src = project.images[i].src;
+            previewContainer.appendChild(preview);
+            preview.onclick = (function(i, preview) {
+                return function() {
+                    imageContainer.removeChild(imageContainer.childNodes[0]);
+                    imageContainer.appendChild(project.images[i]);
+                    currentIndex = i;
+                    console.log(currentIndex);
+                    document.querySelector(".preview_selected").classList.remove("preview_selected");
+                    preview.classList.add("preview_selected");
+                }
+            })(i, preview);
+        }
+    }
 }
