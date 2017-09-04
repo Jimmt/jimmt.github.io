@@ -15,7 +15,7 @@ var projects = [{
         "description": "<b>A Jumpbutton Studio Game\n</b>Totem Stack is an arcade game about stacking randomly falling totems and build a stack higher and higher until you reach the skies. Diverse gameplay with powerups, random events, and a dynamic background, as well as integration with Google Play Game Services for achievements and high scores.",
         "platforms": [{ "name": "google_play", "package": "com.jbs.totemgame.android" }],
         "tools": ["Java", "libGDX", "Google Play Game Services"],
-        "type": "mobile",
+        "type": "mobile-vertical",
         "pics": 1
     },
     {
@@ -134,7 +134,7 @@ for (var i = 0; i < projects.length; i++) {
 
     var mockup = new Image();
     mockup.src = "images/projects/" + projects[i].ref + "_screen_mock.png";
-    mockup.className = "mockup";
+    mockup.className = "mockup " + projects[i].type;
     mockups.push(mockup);
 
     projects[i].images = [];
@@ -219,6 +219,8 @@ function showProject(index) {
     page.innerHTML = "";
     page.style = storStyle;
 
+    createProjectDescription(page, projects[index]);
+
     var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
     page.appendChild(imageContainer);
@@ -254,9 +256,11 @@ function showProject(index) {
             })(i, preview);
         }
     }
+}
 
-    var rightSide = document.createElement("div");
-    rightSide.id = "project_panel_right";
+function createProjectDescription(page, project){
+	var rightSide = document.createElement("div");
+    rightSide.id = "project_panel";
     page.appendChild(rightSide);
 
     var name = document.createElement("p");

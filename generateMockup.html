@@ -8,6 +8,8 @@
     <select id="selector">
         <option value="phone">phone</option>
         <option value="phone-vertical">phone (vertical)</option>
+        <option value="desktop">desktop</option>
+        <option value="laptop">laptop</option>
     </select>
 </body>
 <script>
@@ -29,21 +31,37 @@ function setValues() {
     var value = document.getElementById("selector").value;
    
     if (value == "phone") {
-        width = 814;
-        height = 407;
-        offsetX = 69;
-        offsetY = 16;
-        screenWidth = 665;
-        screenHeight = 375;
+        width = 1303;
+        height = 1299;
+        offsetX = 70;
+        offsetY = 0;
+        screenWidth = 1920/2;
+        screenHeight = 1080/2;
         phoneImage = "images/phone.png";
     } else if (value == "phone-vertical") {
-        width = 407;
-        height = 814;
-        offsetX = 15;
-        offsetY = 68.5;
-        screenWidth = 375;
-        screenHeight = 665;
+        width = 1303;
+        height = 1299;
+        offsetX = 0;
+        offsetY = 70;
+        screenWidth = 1080/2;
+        screenHeight = 1920/2;
         phoneImage = "images/phone_vertical.png";
+    } else if(value == "desktop"){
+    	width = 2100;
+    	height = 1695;
+    	offsetX = 88;
+    	offsetY = 107;
+    	screenWidth = 1920;
+    	screenHeight = 1080;
+    	phoneImage = "images/desktop.png";
+    } else if(value == "laptop"){
+    	width = 1897;
+    	height = 1091;
+    	offsetX = 229;
+    	offsetY = 64;
+    	screenWidth = 1669;
+    	screenHeight = 964;
+    	phoneImage = "images/laptop.png";
     }
 }
 
