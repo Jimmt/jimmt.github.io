@@ -218,12 +218,12 @@ function showProject(index) {
     var storStyle = page.style;
     page.innerHTML = "";
     page.style = storStyle;
-	
-	var imageContainer = document.createElement("div");
+
+    var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
-    
+
     createProjectDescription(page, projects[index], imageContainer);
-    
+
     page.appendChild(imageContainer);
     var mockup = projects[index].images[0];
     imageContainer.appendChild(mockup);
@@ -233,8 +233,8 @@ function showProject(index) {
     }
 }
 
-function createProjectDescription(page, project, imageContainer){
-	var rightSide = document.createElement("div");
+function createProjectDescription(page, project, imageContainer) {
+    var rightSide = document.createElement("div");
     rightSide.id = "project_panel";
     page.appendChild(rightSide);
 
@@ -260,6 +260,12 @@ function createProjectDescription(page, project, imageContainer){
     var platformContainer = document.createElement("div");
     platformContainer.id = "platform_container";
     rightSide.appendChild(platformContainer);
+
+    if (project.images.length > 1) {
+        var line = document.createElement("div");
+        line.id = "line";
+        rightSide.appendChild(line);
+    }
 
     for (var i = 0; i < project.platforms.length; i++) {
         if (project.platforms[i].name == "google_play") {
@@ -313,7 +319,7 @@ function createProjectDescription(page, project, imageContainer){
     var descrip = document.getElementById("descriptionText");
     descrip.innerHTML = project.description;
 
-     if (project.images.length > 1) {
+    if (project.images.length > 1) {
         var previewContainer = document.createElement("div");
         previewContainer.id = "preview_container";
         rightSide.appendChild(previewContainer);
