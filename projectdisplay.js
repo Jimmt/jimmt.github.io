@@ -218,11 +218,10 @@ function showProject(index) {
     var storStyle = page.style;
     page.innerHTML = "";
     page.style = storStyle;
+    page.style.textAlign = "left";
 
     var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
-
-    createProjectDescription(page, projects[index], imageContainer);
 
     page.appendChild(imageContainer);
     var mockup = projects[index].images[0];
@@ -231,6 +230,8 @@ function showProject(index) {
     for (var i = 0; i < projects[index].images.length; i++) {
         projects[index].images[i].style.opacity = '1.0';
     }
+
+    createProjectDescription(page, projects[index], imageContainer);
 }
 
 function createProjectDescription(page, project, imageContainer) {
