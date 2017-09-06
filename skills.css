@@ -2,15 +2,40 @@
     font-family: "Clear-sans";
     color: var(--font-color);
     font-size: 26px;
+    display: inline-block;
+    margin: 30px;
     /*text-align: center;*/
 }
 
 .text_container {
     display: inline-block;
     margin-top: 20px;
-    width: 50%;
     text-align: left;
     line-height: 2.5em;
     margin-left: auto;
     margin-right: auto;
+}
+
+.text_container div {
+    display: flex;
+    align-items: center;
+    margin: 25px 0px 25px 0px;
+    opacity: 0.0;
+}
+
+img {
+    border: 1px solid var(--highlight-color);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1.0;
+    }
 }
