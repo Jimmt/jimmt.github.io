@@ -89,14 +89,8 @@ function imageExists(url, callback) {
     img.src = url;
 }
 
-window.onbeforeunload = function(event) {
-    for (var i = 0; i < projects.length; i++) {
-        if (document.location.hash == "#" + projects[i].ref) {
-            showProject(i);
+window.onbeforeunload = function(event) {};
 
-        }
-    }
-};
 window.onpopstate = function(event) {
     console.log(document.location.hash);
     if (document.location.hash == "") {
@@ -117,95 +111,97 @@ window.onhashchange = function(event) {
     }
 };
 
-var imagesCache = [];
-var mockups = [];
+window.onload = function() {
+    var imagesCache = [];
+    var mockups = [];
 
-var added = false;
+    var added = false;
 
-var projectsContainer = document.getElementById("projects_container");
+    var projectsContainer = document.getElementById("projects_container");
 
 
-for (var i = 0; i < projects.length; i++) {
-    var fullImage = new Image();
-    fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
-    // fullImage.id = "display_screen"; 
-    fullImage.className = "project_screen";
-    imagesCache.push(fullImage);
+    for (var i = 0; i < projects.length; i++) {
+        var fullImage = new Image();
+        fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
+        // fullImage.id = "display_screen"; 
+        fullImage.className = "project_screen";
+        imagesCache.push(fullImage);
 
-    var mockup = new Image();
-    mockup.src = "images/projects/" + projects[i].ref + "_screen_mock.png";
-    mockup.className = "mockup " + projects[i].type;
-    mockups.push(mockup);
+        var mockup = new Image();
+        mockup.src = "images/projects/" + projects[i].ref + "_screen_mock.png";
+        mockup.className = "mockup " + projects[i].type;
+        mockups.push(mockup);
 
-    projects[i].images = [];
-    for (var j = 0; j < projects[i].pics; j++) {
-        if (j == 0) {
-            projects[i].images.push(mockup);
-            continue;
-        }
-        var projectImage = new Image();
-        projectImage.className = "screen";
-        projectImage.opacity = 0.0;
-        var url = "images/projects/" + projects[i].ref + "_screen" + (j == 0 ? "" : j) + ".png";
-        var nmurl = "images/projects/" + projects[i].ref + "_screen" + (j == 0 ? "" : j) + "-nm.png";
-
-        imageExists(url, function(exists) {
-            if (exists) {
-                projectImage.src = url;
-            } else {
-                projectImage.src = nmurl;
+        projects[i].images = [];
+        for (var j = 0; j < projects[i].pics; j++) {
+            if (j == 0) {
+                projects[i].images.push(mockup);
+                continue;
             }
-        });
-        projects[i].images.push(projectImage);
+            var projectImage = new Image();
+            projectImage.className = "screen";
+            projectImage.opacity = 0.0;
+            var url = "images/projects/" + projects[i].ref + "_screen" + (j == 0 ? "" : j) + ".png";
+            var nmurl = "images/projects/" + projects[i].ref + "_screen" + (j == 0 ? "" : j) + "-nm.png";
+
+            imageExists(url, function(exists) {
+                if (exists) {
+                    projectImage.src = url;
+                } else {
+                    projectImage.src = nmurl;
+                }
+            });
+            projects[i].images.push(projectImage);
+        }
+
+    }
+    for (var i = 0; i < projects.length; i++) {
+        var image = new Image();
+        image.className = "project_icon";
+        image.src = "images/projects/" + projects[i].ref + "_icon.png";
+
+        var projectButton = document.createElement("a");
+        projectButton.href = "#" + projects[i].ref;
+        projectButton.className = "project_button";
+
+        var screen = imagesCache[i];
+        screen.className = "screen_bg";
+        projectButton.appendChild(screen);
+        projectButton.onmouseenter = function() {
+            this.childNodes[0].classList.add("hover");
+        };
+        projectButton.onmouseleave = function() {
+            this.childNodes[0].classList.remove("hover");
+        }
+        projectsContainer.appendChild(projectButton);
+        var overlay = document.createElement("div");
+        overlay.className = "overlay";
+        projectButton.appendChild(overlay);
+
+        var container = document.createElement("div");
+        container.className = "projectButtonTextContainer";
+        container.appendChild(image);
+
+        var p = document.createElement("p");
+        p.className = "projectButtonText";
+        var text = document.createTextNode(projects[i].name);
+        p.appendChild(text);
+        container.appendChild(p);
+        projectButton.appendChild(container);
     }
 
-}
-for (var i = 0; i < projects.length; i++) {
-    var image = new Image();
-    image.className = "project_icon";
-    image.src = "images/projects/" + projects[i].ref + "_icon.png";
+    var buttonSelectedColor = "var(--highlight-color)";
 
-    var projectButton = document.createElement("a");
-    projectButton.href = "#" + projects[i].ref;
-    projectButton.className = "project_button";
+    for (var i = 0; i < projects.length; i++) {
+        (function() {
+            buttons[i].addEventListener("click", wrapper.bind(null, i));
+        })();
 
-    var screen = imagesCache[i];
-    screen.className = "screen_bg";
-    projectButton.appendChild(screen);
-    projectButton.onmouseenter = function() {
-        this.childNodes[0].classList.add("hover");
-    };
-    projectButton.onmouseleave = function() {
-        this.childNodes[0].classList.remove("hover");
+
+        // if(i == 0){
+        // 	buttons[0].style.setProperty("background-color", buttonSelectedColor);
+        // }
     }
-    projectsContainer.appendChild(projectButton);
-    var overlay = document.createElement("div");
-    overlay.className = "overlay";
-    projectButton.appendChild(overlay);
-
-    var container = document.createElement("div");
-    container.className = "projectButtonTextContainer";
-    container.appendChild(image);
-
-    var p = document.createElement("p");
-    p.className = "projectButtonText";
-    var text = document.createTextNode(projects[i].name);
-    p.appendChild(text);
-    container.appendChild(p);
-    projectButton.appendChild(container);
-}
-
-var buttonSelectedColor = "var(--highlight-color)";
-
-for (var i = 0; i < projects.length; i++) {
-    (function() {
-        buttons[i].addEventListener("click", wrapper.bind(null, i));
-    })();
-
-
-    // if(i == 0){
-    // 	buttons[0].style.setProperty("background-color", buttonSelectedColor);
-    // }
 }
 
 function wrapper(index) {
