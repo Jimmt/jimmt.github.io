@@ -168,6 +168,7 @@ window.onload = function() {
 
         var screen = imagesCache[i];
         screen.className = "screen_bg";
+
         projectButton.appendChild(screen);
         projectButton.onmouseenter = function() {
             this.childNodes[0].classList.add("hover");
@@ -193,7 +194,7 @@ window.onload = function() {
     }
 
     var buttonSelectedColor = "var(--highlight-color)";
-
+    staggerAnimation(document.querySelectorAll(".project_button"), "slideIn 1s var(--curve) 0s 1 forwards", 1 / 8);
     for (var i = 0; i < projects.length; i++) {
         (function() {
             buttons[i].addEventListener("click", wrapper.bind(null, i));
