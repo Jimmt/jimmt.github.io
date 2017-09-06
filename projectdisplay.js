@@ -222,6 +222,7 @@ function showProject(index) {
 
     var imageContainer = document.createElement("div");
     imageContainer.id = "image_container";
+    imageContainer.classList.add("sliding_right");
 
     page.appendChild(imageContainer);
     var mockup = projects[index].images[0];
@@ -237,6 +238,7 @@ function showProject(index) {
 function createProjectDescription(page, project, imageContainer) {
     var rightSide = document.createElement("div");
     rightSide.id = "project_panel";
+    rightSide.classList.add("sliding_left");
     page.appendChild(rightSide);
 
     var name = document.createElement("p");
