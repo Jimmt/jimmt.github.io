@@ -100,7 +100,7 @@ window.onpopstate = function(event) {
     } else {
         for (var i = 0; i < projects.length; i++) {
             if (document.location.hash == "#" + projects[i].ref) {
-                showProject(i);	
+                showProject(i);
             }
         }
     }

@@ -1,67 +1,51 @@
 <html>
-<head>
-	<title>Austin Hsieh</title>
-	<link rel="stylesheet" type="text/css" href="contact.css">
-</head>
-<body> 
-	<div id="header"></div>
-	<script type="text/javascript" src="loadheader.js"></script>
-	<div id="page">
-		<table id="container">
-			<tr>
-				<td colspan="2">
-					<div>
-						<img class="contactButton" id="email_button" src="images/contact/email.png"/>
-						<span>austin.hsieh0@gmail.com</span>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div>
-						<img class="contactButton" src="images/contact/linkedin.png"/>
-					</div>
-				</td>
-				<td>
-					<div>
-						<img class="contactButton" src="images/contact/github.png"/>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div>
-						<img class="contactButton" src="images/contact/youtube.png"/>
-					</div>
-				</td>
-				<td>
-					<div>
-						<img class="contactButton" src="images/contact/twitter.png"/>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<div>
-						<img class="contactButton" src="images/contact/jbs.png"/>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<script>
-	var links = ["mailto:austin.hsieh0@gmail.com", "https://www.linkedin.com/pub/austin-hsieh/b7/9a6/b54", "https://github.com/Jimmt", "https://www.youtube.com/channel/UCtH08jcWIWflj7fyuUfctbw", "https://twitter.com/j1mmt", "https://www.jumpbuttonstudio.com"];
 
-	var tds = document.getElementsByTagName("td");
-	for(var i = 0; i < tds.length; i++){
-		var func = function(_i){
-			tds[i].addEventListener("click", function(){
-				var url = links[_i];
-				window.open(url, '_blank');
-			});
-		}
-		func(i);
-	}
-	</script>
+<head>
+    <title>Austin Hsieh</title>
+    <link rel="stylesheet" type="text/css" href="contact.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <script type="text/javascript" src="loadheader.js"></script>
+    <script type="text/javascript" src="staggeranimation.js"></script>
+    <div id="page">
+        <div id="container">
+            <div>
+                <img class="contactButton" id="email" src="images/contact/email.png" />
+            </div>
+            <div>
+                <img id="linkedin" class="contactButton" src="images/contact/linkedin.png" />
+            </div>
+            <div>
+                <img id="github" class="contactButton" src="images/contact/github.png" />
+            </div>
+            <div>
+                <img id="youtube" class="contactButton" src="images/contact/youtube.png" />
+            </div>
+            <div>
+                <img id="twitter" class="contactButton" src="images/contact/twitter.png" />
+            </div>
+            <div>
+                <img id="jbs" class="contactButton" src="images/contact/jbs.png" />
+            </div>
+        </div>
+        <script>
+        var links = ["mailto:austin.hsieh0@gmail.com", "https://www.linkedin.com/pub/austin-hsieh/b7/9a6/b54", "https://github.com/Jimmt", "https://www.youtube.com/channel/UCtH08jcWIWflj7fyuUfctbw", "https://twitter.com/j1mmt", "https://www.jumpbuttonstudio.com"];
+
+        var elements = document.querySelectorAll("#container div");
+        for (var i = 0; i < elements.length; i++) {
+            var func = function(_i) {
+                elements[i].addEventListener("click", function() {
+                    var url = links[_i];
+                    window.open(url, '_blank');
+                });
+            }
+            func(i);
+        }
+
+        staggerAnimation(document.querySelectorAll("#container div"), "slideIn 1s var(--curve) 0s 1 forwards");
+        </script>
 </body>
+
 </html>

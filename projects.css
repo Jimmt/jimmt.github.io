@@ -88,8 +88,8 @@
 
 .screen {
     opacity: 0.0;
-    -moz-opacity: 1.0;
-    -webkit-opacity: 1.0;
+    -moz-opacity: 0.0;
+    -webkit-opacity: 0.0;
     transition: opacity 1s;
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
@@ -276,7 +276,7 @@
 }
 
 .sliding_right {
-    animation: 1s cubic-bezier(.23,.63,.23,.99) 0s 1 slideRight;
+    animation: 1s var(--curve) 0s 1 slideRight;
 }
 
 @keyframes slideRight {

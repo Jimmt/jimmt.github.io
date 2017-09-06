@@ -1,8 +1,3 @@
 window.onload = function() {
-	"use strict";
-    var counter = 0;
-
-    document.querySelectorAll(".text_container div").forEach(function(e) {
-        e.style.animation = "slideIn 1s cubic-bezier(.23,.63,.23,.99) " + (counter++) / 8 + "s 1 forwards";
-    });
+    staggerAnimation(document.querySelectorAll(".text_container div"), "slideIn 1s var(--curve) 0s 1 forwards");
 }
