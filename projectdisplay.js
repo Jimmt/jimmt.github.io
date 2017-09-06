@@ -89,7 +89,9 @@ function imageExists(url, callback) {
     img.src = url;
 }
 
-window.onbeforeunload = function(event) {};
+window.onbeforeunload = function(event) {
+
+};
 
 window.onpopstate = function(event) {
     console.log(document.location.hash);
@@ -98,7 +100,7 @@ window.onpopstate = function(event) {
     } else {
         for (var i = 0; i < projects.length; i++) {
             if (document.location.hash == "#" + projects[i].ref) {
-                showProject(i);
+                showProject(i);	
             }
         }
     }
