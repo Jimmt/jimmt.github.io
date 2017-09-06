@@ -29,13 +29,3 @@ img {
     width: 100px;
     height: 100px;
 }
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0%);
-        opacity: 1.0;
-    }
-}

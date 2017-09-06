@@ -22,8 +22,8 @@
         </div>
     </div>
     <script>
-    console.log(document.querySelectorAll("#page *"));
-    	staggerAnimation(document.querySelectorAll("#titleBar > *"), "slideIn 1s var(--curve) 0s 1 forwards");
+    var elements = document.querySelectorAll("#titleBar > *");
+    staggerAnimation(elements, "slideIn 1s var(--curve) 0s 1 normal forwards");
     </script>
 </body>
 

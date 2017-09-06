@@ -1,41 +1,51 @@
 #profile {
-	display: block;
-	width: 200px;
-	border-radius: 100%;
-	margin: auto;
-	margin-top: 24px;
+    display: block;
+    width: 200px;
+    border-radius: 100%;
+    margin: auto;
+    margin-top: 24px;
 }
+
 #titleBar {
-	width: 100%;
-	margin: auto;
-	text-align: center;
+    width: 100%;
+    margin: auto;
+    text-align: center;
 }
+
 #name {
-	display: inline;
-	width: 100%;
-	font-family: "Clear-sans";
-	color: var(--font-color);	
-	font-size: 34px;	
-	padding: 0px 50px 20px 50px;
-	border-bottom: 2px var(--highlight-color) solid;
+    display: inline;
+    width: 100%;
+    font-family: "Clear-sans";
+    color: var(--font-color);
+    font-size: 34px;
+    padding: 0px 50px 20px 50px;
+    border-bottom: 2px var(--highlight-color) solid;
 }
+
 #name_container {
-	display: block;
-	margin-top: 20px;
+    display: block;
+    margin-top: 20px;
 }
+
 .text_container {
-	display: inline-block;
-	margin-top: 20px;
-	width:75%;
-	text-align: center;
-	line-height: 2.5em;
+    display: inline-block;
+    margin-top: 20px;
+    width: 75%;
+    text-align: center;
+    line-height: 2.5em;
 }
+
+#titleBar>* {
+    opacity: 0.0;
+}
+
 a {
-	text-decoration: none;
-	color: var(--highlight-color);
+    text-decoration: none;
+    color: var(--highlight-color);
 }
+
 .text {
-	font-family: "Clear-sans";
-	color: var(--font-color);
-	font-size: 26px;
+    font-family: "Clear-sans";
+    color: var(--font-color);
+    font-size: 26px;
 }

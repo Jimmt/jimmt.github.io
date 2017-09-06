@@ -18,7 +18,7 @@
     text-decoration: none;
     vertical-align: top;
     margin: 10px;
-    transform: translateX(200%);
+    opacity: 0.0;
 }
 
 .github_button {
