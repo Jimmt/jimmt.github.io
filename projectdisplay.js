@@ -39,7 +39,7 @@ var projects = [{
     {
         "name": "Infection: FBLA 2015",
         "ref": "fbla",
-        "description": "<b>Made for FBLA Computer Game & Simulation 2015\n</b>Infection is a game designed to teach the user about computer security. The user pilots a spaceship and shoots enemies while navigating through mutliple levels with unique boss fights. Features different visual and functional upgrades in the game.",
+        "description": "<b>Placed second at FBLA Computer Game & Simulation 2015 (CA)\n</b>Infection is a game designed to teach the user about computer security. The user pilots a spaceship and shoots enemies while navigating through mutliple levels with unique boss fights. Features different visual and functional upgrades in the game.",
         "platforms": [{ "name": "github", "link": "https://github.com/Jimmt/FBLA2015" }],
         "tools": ["Java", "libGDX"],
         "type": "desktop",
@@ -349,5 +349,12 @@ function createProjectDescription(page, project, imageContainer) {
                 }
             })(i, preview);
         }
+    }
+
+    if (project.type == "web" || project.type == "desktop") {
+        var attribution = document.createElement("p");
+        attribution.id = "attribution";
+        attribution.innerHTML = "Laptop mockup (modified) courtesy of www.cssauthor.com under CC BY 4.0 license.";
+        rightSide.appendChild(attribution);
     }
 }

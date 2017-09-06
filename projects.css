@@ -278,3 +278,8 @@
     display: inline-block;
     font-size: 100pt;
 }
+
+#attribution {
+	margin-top: 30px;
+	font-size: 10pt;
+}
