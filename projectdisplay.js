@@ -80,6 +80,9 @@ var toolLinks = [
     { "name": "Microsoft Emotion API", "link": "https://www.microsoft.com/cognitive-services/en-us/emotion-api" },
     { "name": "Webcam Capture API", "link": "http://webcam-capture.sarxos.pl" },
     { "name": "Google Play Game Services", "link": "https://developers.google.com/games/services/" },
+    { "name": "HTML", "link": "" },
+    { "name": "CSS", "link": "" },
+    { "name": "Javascript", "link": "" }
 ];
 
 function imageExists(url, callback) {
@@ -202,7 +205,7 @@ window.onload = function() {
 
 
         // if(i == 0){
-        // 	buttons[0].style.setProperty("background-color", buttonSelectedColor);
+        //  buttons[0].style.setProperty("background-color", buttonSelectedColor);
         // }
     }
 }
@@ -291,32 +294,32 @@ function createProjectDescription(page, project, imageContainer) {
             githubImage.className = "github_image";
             githubButton.appendChild(githubImage);
             platformContainer.appendChild(githubButton);
+        } else if (project.platforms[i].name == "web") {
+
         }
     }
 
     var toolsText = "";
+    document.getElementById("toolsText").innerHTML = "Built With: ";
     for (var i = 0; i < project.tools.length; i++) {
         var linkToAdd = "";
         for (var j = 0; j < toolLinks.length; j++) {
             if (toolLinks[j].name == project.tools[i]) {
-                linkToAdd = "<a href=" + toolLinks[j].link + " target='_blank' style='text-decoration:none'>";
-                toolsText += linkToAdd;
+                var linkToAdd = document.createElement("a");
+                linkToAdd.target = "_blank";
+                if (toolLinks[j].link)
+                    linkToAdd.href = toolLinks[j].link;
+                linkToAdd.style = "text-decoration: none";
+                linkToAdd.innerHTML = (i != project.tools.length - 1) ? project.tools[i] + ", " : project.tools[i];
+                document.getElementById("toolsText").appendChild(linkToAdd);
                 break;
             }
-        }
-        if (linkToAdd == "") {
-            break;
-        }
-        toolsText += project.tools[i];
-
-        if (linkToAdd != "") {
-            toolsText += "</a>";
         }
         if (i != project.tools.length - 1) {
             toolsText += ", ";
         }
     }
-    document.getElementById("toolsText").innerHTML = "Built With: " + toolsText;
+    // document.getElementById("toolsText").innerHTML = "Built With: " + toolsText;
 
     var descrip = document.getElementById("descriptionText");
     descrip.innerHTML = project.description;
