@@ -273,30 +273,29 @@ function createProjectDescription(page, project, imageContainer) {
     }
 
     for (var i = 0; i < project.platforms.length; i++) {
-        if (project.platforms[i].name == "google_play") {
-            var playLink = document.createElement("a");
-            playLink.target = "_blank";
-            playLink.className = "googleplay_button";
-            playLink.href = "https://play.google.com/store/apps/details?id=" + project.platforms[i].package;
-            var playImage = document.createElement("img");
-            playImage.src = "https://developer.android.com/images/brand/en_app_rgb_wo_60.png";
-            playImage.alt = "Android app on Google Play";
-            playLink.appendChild(playImage);
-            platformContainer.appendChild(playLink);
-        } else if (project.platforms[i].name == "github") {
-            var githubButton = document.createElement("a");
-            githubButton.target = "_blank";
-            githubButton.className = "github_button";
-            githubButton.href = project.platforms[i].link;
-            var githubImage = document.createElement("img");
-            githubImage.src = "images/contact/github_black.png";
-            githubImage.alt = "Github Repository";
-            githubImage.className = "github_image";
-            githubButton.appendChild(githubImage);
-            platformContainer.appendChild(githubButton);
-        } else if (project.platforms[i].name == "web") {
+        var link = document.createElement("a");
+        link.className = "platform_button";
+        var linkImage = document.createElement("img");
+        linkImage.className = "platform_image";
 
+        if (project.platforms[i].name == "google_play") {
+            link.target = "_blank";
+            link.href = "https://play.google.com/store/apps/details?id=" + project.platforms[i].package;
+            linkImage.src = "https://developer.android.com/images/brand/en_app_rgb_wo_60.png";
+            linkImage.alt = "Android app on Google Play";
+        } else if (project.platforms[i].name == "github") {
+            link.target = "_blank";
+            link.href = project.platforms[i].link;
+            linkImage.src = "images/contact/github_black.png";
+            linkImage.alt = "Github Repository";
+        } else if (project.platforms[i].name == "web") {
+            link.target = "_blank";
+            link.href = project.platforms[i].link;
+            linkImage.src = "images/contact/link.png";
+            linkImage.alt = "Link";
         }
+        link.appendChild(linkImage);
+        platformContainer.appendChild(link);
     }
 
     var toolsText = "";

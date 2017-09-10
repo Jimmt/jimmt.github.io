@@ -21,20 +21,15 @@
     opacity: 0.0;
 }
 
-.github_button {
+.platform_button {
     display: inline-block;
     vertical-align: middle;
     margin: 0px 5px 0px 5px;
 }
 
-.github_image {
-    max-width: 75px;
-}
-
-.googleplay_button {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0px 5px 0px 5px;
+.platform_image {
+    /*max-width: 75px;*/
+    max-height: 75px;
 }
 
 .overlay {
