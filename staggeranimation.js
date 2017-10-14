@@ -3,8 +3,9 @@ function staggerAnimation(elements, animation, timeBetween) {
 		timeBetween = 1 / 8;
 	}
 	var counter = 0;
-    elements.forEach(function(e) {
+    for(var i = 0; i < elements.length; i++){
+    	var e = elements[i];
     	e.style.animation = animation;
         e.style.animationDelay = (counter++) * timeBetween + "s";
-    });
+    };
 }

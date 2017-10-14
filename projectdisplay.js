@@ -128,6 +128,7 @@ window.onload = function() {
     for (var i = 0; i < projects.length; i++) {
         var fullImage = new Image();
         fullImage.src = "images/projects/" + projects[i].ref + "_screen.png";
+        console.log(fullImage.src);
         // fullImage.id = "display_screen"; 
         fullImage.className = "project_screen";
         imagesCache.push(fullImage);
