@@ -263,7 +263,7 @@
 }
 
 .sliding_right {
-    animation: 1s var(--curve) 0s 1 sl  ideRight;
+    animation: 1s var(--curve) 0s 1 slideRight;
 }
 
 @keyframes slideRight {
