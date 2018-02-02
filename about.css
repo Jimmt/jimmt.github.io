@@ -49,3 +49,26 @@ a {
     color: var(--font-color);
     font-size: 26px;
 }
+
+#resume-button {
+    border: 1px var(--highlight-color-2) solid;
+    margin-top: 20px;
+    padding: 0px 20px 0px 20px;
+    display: inline-block;
+    /*color: black;*/
+    background-color: white;
+    transition: background-color 1s;
+}
+
+#resume-button:hover {
+    background-color: var(--highlight-color-2);
+    cursor: pointer;
+    cursor: hand;
+}
+
+#resume-image {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 9px;
+    margin-left: 0px;
+}

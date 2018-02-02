@@ -24,7 +24,7 @@
 }
 
 img {
-    border: 1px solid var(--highlight-color);
+    border: 1px solid var(--highlight-color-2);
     display: inline-block;
     width: 100px;
     height: 100px;
