@@ -63,7 +63,6 @@ a {
 #resume-button:hover {
     background-color: var(--highlight-color-2);
     cursor: pointer;
-    cursor: hand;
 }
 
 #resume-image {
