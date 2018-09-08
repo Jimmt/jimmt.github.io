@@ -1,0 +1,6 @@
+.work-box {
+    margin: auto;
+    width: 50%;
+    border: 2px var(--highlight-color) solid;
+    margin-top: 20px;
+}

@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="work.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <script type="text/javascript" src="loadheader.js"></script>
+    <script type="text/javascript" src="staggeranimation.js"></script>
+    <div id="page">
+        <div class="work-box">Google Software Engineer Intern</div>
+        <div class="work-box">Creative Coding for Kids</div>
+        <div class="work-box">Jumpbutton Studio</div>
+    </div>
+    </div>
+    <script>
+    var elements = document.querySelectorAll("#titleBar > *");
+    staggerAnimation(elements, "slideIn 1s var(--curve) 0s 1 normal forwards");
+    </script>
+</body>
+
+</html>
