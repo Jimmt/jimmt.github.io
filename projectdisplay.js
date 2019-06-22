@@ -1,6 +1,16 @@
 var buttons = document.getElementsByClassName("project_button");
 
-var projects = [{
+var projects = [
+    {
+        "name": "Paths",
+        "ref": "paths",
+        "description": "Path is a mobile application that seeks to correct stereotypes and misunderstandings about homeless by presenting real stories of homeless individuals in an interactive, decision-based format.",
+        "platforms": [{ "name": "google_play", "package": "com.team7.homelessstories" }],
+        "tools": ["Java"],
+        "type": "mobile",
+        "pics": 1
+    },
+    {
         "name": "Puck Slide",
         "ref": "puckslide",
         "description": "<b>A Jumpbutton Studio Game\n</b>Puck Slide is an addicting arcade game about sliding a hockey puck across snow and mud with precision. Integrated with Google Play Game Services for high scores and achievements.",
